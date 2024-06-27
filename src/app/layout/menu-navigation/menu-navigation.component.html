@@ -1,0 +1,125 @@
+<div class="top_menu">
+  <div class="top_menu_wrap">
+    <div class="menu_left" routerLink="/portal/home">
+      <img class="logo_okdock_menu" src="assets/img/logo_okdock.png" />
+    </div>
+    <app-search-autocomplete-product
+      [value]="APIproducts.filter_products.criteria"
+      [placeholder]="'Buscar productos'"
+      [data]="arr_search"
+      (searchChange)="searchProducts($event)"
+      (onSelectionChange)="changeSearch($event)"
+    >
+    </app-search-autocomplete-product>
+
+    <div class="menu_right">
+      <div class="menu_cart_icon" routerLink="/portal/cart">
+        <span class="material-icons-outlined cart_icon"> shopping_cart </span>
+        <span class="user_profile_text">Carrito</span>
+        <span *ngIf="APICart.total_products && !APICart.is_loading" class="cart_qty_badge">{{
+          APICart.total_products
+        }}</span>
+      </div>
+      <div class="user_profile" routerLink="/portal/account/details">
+        <span class="material-icons-outlined account_icon"> account_circle </span>
+        <span class="user_profile_text">
+          <a *ngIf="!this.auth_service.id_user" href="" class="menu__link menu__link" routerLink="/auth/login">
+            Iniciar sesión
+          </a>
+          <a *ngIf="this.auth_service.id_user" href="" class="menu__link menu__link" routerLink="/portal/account">
+            {{ this.auth_service.name }}
+          </a>
+        </span>
+      </div>
+      <div class="burger_menu" *ngIf="!category_menu" (click)="openCategoryMenu()">
+        <span class="material-symbols-outlined burger_icon">menu</span>
+      </div>
+      <div class="burger_menu" *ngIf="category_menu" (click)="closeCategoryMenu()">
+        <span class="material-symbols-outlined burger_icon">close</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap_bottom_menu">
+  <nav class="navbar">
+    <div class="collapsible_menu">
+      <ul class="menu_categories" (clickOutside)="closeCategoryMenu()">
+        <li class="menu__item flex_menu_item" (click)="openCategoryMenu()">
+          <a class="menu__link menu__link--bold"> Categorias </a>
+          <span class="material-symbols-outlined arrow_expand"> expand_more </span>
+        </li>
+        <li
+          class="menu__item menu_responsive"
+          *ngFor="let type of arr_types | slice : 0 : 6"
+          (click)="selectCategory(type.type); closeCategoryMenu()"
+        >
+          <a class="menu__link menu__link--bold">
+            {{ type.type }}
+          </a>
+        </li>
+      </ul>
+
+      <div class="category_menu_abs" [class.open_responsive_menu]="category_menu && arr_categories">
+        <div class="category_menu_container">
+          <div class="wrap_parent_menu">
+            <div
+              [class.category_item_hover]="cat.id_category == selected_category"
+              *ngFor="let cat of arr_categories"
+              (click)="selectCategoryTypes(cat.items); $event.stopPropagation()"
+            >
+              <div class="category_item">
+                <span>{{ cat.category | slice : 0 : 25 }} <span *ngIf="cat.category.length > 25"> ...</span></span>
+                <span class="material-symbols-outlined">chevron_right</span>
+              </div>
+
+              <div class="responsive_childs" *ngIf="selected_category == cat.id_category">
+                <div
+                  class="cat_type_item"
+                  (click)="selectCategory(item.type); closeCategoryMenu()"
+                  [class.cat_type_item_hover]="item.id_type == selected_type"
+                  *ngFor="let item of selected_category_types"
+                  (mouseover)="selectType(item.id_type)"
+                >
+                  <span>{{ item.type }}</span>
+                  <span class="material-symbols-outlined force_hide">chevron_right</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wrap_child_menu" *ngIf="selected_category">
+            <div
+              class="cat_type_item"
+              (click)="selectCategory(item.type); closeCategoryMenu()"
+              [class.cat_type_item_hover]="item.id_type == selected_type"
+              *ngFor="let item of selected_category_types"
+              (mouseover)="selectType(item.id_type)"
+            >
+              <span>{{ item.type }}</span>
+              <span class="material-symbols-outlined force_hide">chevron_right</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <ul class="menu">
+        <li class="menu__item row--flex row--flex-align-center">
+          <p class="menu__link menu__link--bold" (click)="goToOrders()">Mis ordenes</p>
+        </li>
+        <li class="menu__item row--flex row--flex-align-center">
+          <a href="" class="menu__link menu__link--bold" routerLink="/portal/contact"> Contacto </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrap-flayout-menu">
+      <div class="row row--flex row--flex-align-center pointer" (click)="is_open_flayout_menu = !is_open_flayout_menu">
+        <p class="text text--sm text--white">More</p>
+        <span class="material-icons white">expand_more</span>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,161 @@
+<div class="page">
+    <div class="page__header">
+        <h2 class="page__title">
+            User Profile
+        </h2>
+    </div>
+    <div class="page__body">
+        <div class="grid-container animate__animated animate__fadeIn">
+            <div class="col col--span-3">
+                <div class="row row--flex row--flex-between row--border-bottom row--pb-10">
+                    <h3>
+                        Personal Info
+                    </h3>
+                    <p class="logout"
+                        (click)="logout();">
+                        Logout
+                        <span class="material-icons">
+                            login
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="col col--span-3 col--cards">
+                <div class="card card--span-2 card--span-1">
+                    <div class="card__body">
+                        <div class="form form--col-2">
+                            <div class="form__group form__group--span-2">
+                                <p class="form__label">
+                                    Username
+                                </p>
+                                <input
+                                    type="text"
+                                    readonly
+                                    class="form__control form__control--gray"
+                                    [value]="user.username">
+                            </div>
+                            <div class="form__group form__group--span-2">
+                                <p class="form__label">
+                                    Email Address
+                                </p>
+                                <input
+                                    type="text"
+                                    readonly
+                                    class="form__control form__control--disabled"
+                                    readonly
+                                    [value]="user.email">
+                            </div>
+                            <div class="form__group form__group--span-2">
+                                <p class="form__label">
+                                    Business Name
+                                </p>
+                                <input
+                                    readonly
+                                    type="text"
+                                    class="form__control"
+                                    [value]="user.business_Name">
+                            </div>
+                            <div class="form__group">
+                                <p class="form__label">
+                                    Phone Number
+                                </p>
+                                <input
+                                    readonly
+                                    type="text"
+                                    class="form__control">
+                            </div>
+                            <div class="form__group">
+                                <p class="form__label">
+                                    RSW Number
+                                </p>
+                                <input
+                                    readonly
+                                    type="text"
+                                    class="form__control"
+                                    [value]="user.accountNumber">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col--span-3">
+                <div class="row row--border-bottom row--pb-10 row--flex row--flex-between">
+                    <h3>
+                        Address
+                    </h3>
+                    <p class="text text--color-blue text--border-bottom text--semi-bold pointer"
+                        (click)="openAddAddressDialog();"
+                        *ngIf="!loading">
+                        Add Address
+                    </p>
+                </div>
+            </div>
+            <div class="col col--span-3 col--cards" *ngIf="!loading">
+                <div class="card animate__animated animate__fadeIn"
+                    *ngFor="let address of addresses">
+                    <div class="card__header">
+                        <p class="text text--semi-bold text--capitalize">
+                            {{ address.name }}
+                        </p>
+                        <p class="text text--color-blue text--semi-bold text--border-bottom pointer"
+                            (click)="openEditAddressDialog(address)">
+                            Edit
+                        </p>
+                    </div>
+                    <div class="card__body">
+                        <div class="row">
+                            <p class="text text--capitalize">
+                                {{ address.street1 }}
+                            </p>
+                        </div>
+                        <div class="row" *ngIf="address.street2">
+                            <p class="text text--capitalize">
+                                {{ address.street2 }}
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p class="text text--capitalize">
+                                {{ address.city }}
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p class="text text--capitalize">
+                                {{ address.stateOrProvidence }},
+                                <span class="text text--uppercase">
+                                    {{ address.country }}
+                                </span>
+                            </p>
+                        </div>
+                        <div class="row">
+                            <p class="text">
+                                {{ address.postalCode }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text text--semi-bold" *ngIf="!loading && addresses.length == 0">
+                No saved address yet
+            </p>
+
+            <!-- loaders cards -->
+            <div class="card" *ngIf="loading">
+                <div class="row">
+                    <app-skeleton width="100" *ngIf="loading"></app-skeleton>
+                </div>
+                <div class="row">
+                    <app-skeleton width="120" *ngIf="loading"></app-skeleton>
+                </div>
+                <div class="row">
+                    <app-skeleton width="150" *ngIf="loading"></app-skeleton>
+                </div>
+                <div class="row">
+                    <app-skeleton width="60" *ngIf="loading"></app-skeleton>
+                </div>
+                <div class="row">
+                    <app-skeleton width="60" *ngIf="loading"></app-skeleton>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

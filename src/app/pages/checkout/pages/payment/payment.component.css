@@ -1,0 +1,163 @@
+.wrap-container { width: 100% }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px;
+  padding-bottom: 20px;
+}
+
+.contact_info{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: .2s ease all;
+}
+
+.select_pay{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 150px));
+  column-gap: 10px;
+  margin-bottom: 20px;
+}
+.select_pay > div{
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: #ffff;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+  row-gap: 5px;
+}
+
+.select_pay > .active_pay{
+  border-color: #0457c8;
+}
+
+.select_pay > div > div:first-child{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f2f2f8;
+  border-radius: 50%;
+}
+
+.select_pay > div > p{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.limit_credit{
+  color: green;
+  font-weight: 700;
+}
+
+.col--59 { width: 59% }
+
+.col--39 { width: 39% }
+
+.card:hover { border-color: #0457c8 }
+
+.card.active { border-color: #0457c8; }
+
+.card__icon {
+  color: #0457c8;
+  font-size: 22px;
+}
+
+.card__top { margin-bottom: 30px }
+
+.col--80 { width: 80% }
+
+.thumb-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 4px;
+  margin-right: 20px;
+  text-align: center;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+}
+
+.order {
+  background: white;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+}
+
+.sumary_price {
+  color: #797979;
+  font-size: 13px;
+}
+
+
+.order_info {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+}
+
+.order__body,
+.wrap-button { padding: 20px }
+
+.order__footer { border-top: 1px solid #CCC }
+
+.product-list {
+  max-height: 515px;
+  overflow-y: auto;
+}
+
+.product_info{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1px;
+  width: 100%;
+}
+
+.product-list__item {
+  padding: 20px;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.product_price{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .col--md-100 { width: 100% }
+}
+
+@media screen and (max-width: 414px) {
+  .col--sm-100 { width: 100% }
+
+  .row--sm-block { display: block }
+
+  .form__group--mb-20 { margin-bottom: 20px }
+
+  .card { margin-bottom: 20px; }
+}

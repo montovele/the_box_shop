@@ -1,0 +1,111 @@
+<div class="dialog">
+  <div class="dialog__header">
+    <h4>Detalle de orden</h4>
+    <i class="ti ti-x" (click)="closeDialog()"></i>
+  </div>
+  <div class="dialog__body">
+    <div class="dialog__body__section_1">
+      <div class="order_header">
+        <div>
+          <p>{{ order_detail.order_number }}</p>
+          <p>{{ order_detail.created_date | date: "mediumDate" }}</p>
+        </div>
+        <div>
+          <p>{{ order_detail.order_status }}</p>
+        </div>
+      </div>
+      <div class="order_information" [formGroup]="form">
+        <p>Informacion de orden</p>
+        <div>
+          <div class="form_group">
+            <label for="">Nombre</label>
+            <input type="text" formControlName="name" />
+          </div>
+          <div class="form_group">
+            <label for="">Apellidos</label>
+            <input type="text" formControlName="last_name" />
+          </div>
+          <div class="form_group email">
+            <label for="">Email</label>
+            <input type="text" formControlName="email" />
+          </div>
+          <div class="form_group">
+            <label for="">Telefono</label>
+            <input type="text" formControlName="phone" />
+          </div>
+          <div class="form_group">
+            <label for="">Direccion</label>
+            <input type="text" formControlName="address" />
+          </div>
+          <div class="form_group">
+            <label for="">Estado</label>
+            <app-select (changeOption)="changeSelect($event)" [config]="select_state" [disable]="true"></app-select>
+          </div>
+          <div class="form_group">
+            <label for="">City</label>
+            <input type="text" formControlName="city" />
+          </div>
+          <div class="form_group">
+            <label for="">Country</label>
+            <input type="text" formControlName="country" />
+          </div>
+          <div class="form_group">
+            <label for="">Codigo Postal</label>
+            <input type="text" formControlName="zip" />
+          </div>
+        </div>
+      </div>
+      <div class="order_summary">
+        <p>Detalle de compra</p>
+        <div>
+          <div>
+            <div>Subtotal</div>
+            <div>{{ order_detail.subtotal | currency }}</div>
+          </div>
+          <div>
+            <div>IVA</div>
+            <div>{{ order_detail.total_iva | currency }}</div>
+          </div>
+          <div>
+            <div>Envio</div>
+            <div>{{ order_detail.shipping_cost | currency }}</div>
+          </div>
+          <div>
+            <div>Total</div>
+            <div>{{ order_detail.total | currency }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog__body__section_2">
+      <div>
+        <div>Producto</div>
+        <div>Cantidad</div>
+        <div>P/U</div>
+        <div>Total</div>
+      </div>
+      <div class="products">
+        <div class="products__item" *ngFor="let product of order_detail.products">
+          <div class="products__item__info">
+            <div class="img_container">
+              <img [src]="product.image_url" alt="" />
+            </div>
+            <div>
+              <p>{{ product.name }}</p>
+              <p>{{ product.model }}</p>
+            </div>
+          </div>
+          <div>
+            {{ product.selected_qty }}
+          </div>
+          <div>
+            {{ product.price | currency }}
+          </div>
+          <div>
+            {{ product.price * product.selected_qty | currency }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

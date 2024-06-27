@@ -1,0 +1,55 @@
+<ul class="menu">
+  <li
+    class="menu__item"
+    routerLink="/portal/account/details"
+    routerLinkActive="active">
+    <span class="material-icons-outlined menu__icon">
+      account_circle
+    </span>
+    <a class="menu__link">
+      Perfil
+    </a>
+  </li>
+  <li
+    class="menu__item"
+    routerLink="/portal/account/address"
+    routerLinkActive="active">
+    <span class="material-icons-outlined menu__icon">
+      home
+    </span>
+    <a class="menu__link">
+      Direcciones
+    </a>
+  </li>
+  <li
+    class="menu__item"
+    routerLink="/portal/account/orders"
+    routerLinkActive="active">
+    <span class="material-icons-outlined menu__icon">
+      shopping_bag
+    </span>
+    <a class="menu__link">
+      Compras
+    </a>
+  </li>
+  <li
+    class="menu__item"
+    routerLink="/portal/account/quotes"
+    routerLinkActive="active">
+    <span class="material-icons-outlined menu__icon">
+      shopping_bag
+    </span>
+    <a class="menu__link">
+      Cotizaciones
+    </a>
+  </li>
+  <li
+    class="menu__item" (click)="logout()">
+    <span class="material-icons-outlined menu__icon">
+      logout
+    </span>
+    <a class="menu__link">
+      Cerrar Sesión
+    </a>
+  </li>
+</ul>

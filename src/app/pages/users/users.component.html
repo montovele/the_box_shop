@@ -1,0 +1,91 @@
+<div class="user_cont">
+  
+  <div class="options_cont">
+    <h2>Control de Usuarios</h2>
+    <div class="filter_cont">
+      <div class="wrap_filters">
+        <div class="filter">
+          <button class="btn btn--blue mgn_top" (click)="userForm()">
+            New User
+          </button>
+        </div>
+        <div class="filter">
+          <p class="filter__name">Type</p>
+          <select class="filter__select" 
+          [ngModel]="user_type_id"
+          (change)="dropChange($event.target.value,1)">
+              <option value="null" selected>
+                  All
+              </option>
+              <option value="1">
+                  Super Admin
+              </option>
+              <option value="2">
+                  Admin
+              </option>
+              <option value="3">
+                  Client
+              </option>
+              <option value="6">
+                  Sub Client
+              </option>
+          </select>
+        </div>
+        <div class="filter">
+          <p class="filter__name">Status</p>
+          <select class="filter__select" 
+          [ngModel]="user_status_id"
+          (change)="dropChange($event.target.value,2)">
+              <option value="null" selected>
+                  All
+              </option>
+              <option value="1">
+                  Pending
+              </option>
+              <option value="2">
+                  Active
+              </option>
+              <option value="3">
+                  Canceled
+              </option>
+          </select>
+        </div>
+      </div>
+      <div class="wrap-search">
+        <span class="material-icons search-icon">
+            search
+        </span>
+        <input type="text" class="search-bar" placeholder="Search user"  #criteria/>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="table_container">
+    <ngx-table [configuration]="configuration" [data]="user_list" [columns]="columns">
+      <ng-template let-row>
+        <td>
+          <div class="font-small">{{row.name}}</div>
+        </td>
+        <td>
+          <div class="font-small">{{row.email}}</div>
+        </td>
+        <td>
+          <div class="font-small">{{row.phone}}</div>
+        </td>
+        <td>
+          <div class="font-small">{{row.user_type}}</div>
+        </td>
+        <td class="status_column">
+          <div class="status_round" [ngClass]="{'denied': row.user_status == 'Canceled','approved': row.user_status == 'Active','progress': row.user_status == 'Pending' }">{{row.user_status}}</div>
+        </td>
+        <td>
+          <button class="btn btn--blue">
+            Editar
+          </button>
+        </td>
+      </ng-template>
+    </ngx-table>
+  </div>
+
+</div>

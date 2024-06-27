@@ -1,0 +1,115 @@
+<div class="row row--border-bottom row--mb-20">
+  <p *ngIf="data" class="text text--semi-bold">
+    Editar dirección
+  </p>
+  <p *ngIf="!data" class="text text--semi-bold">
+    Crear dirección
+  </p>
+</div>
+ 
+<div class="row">
+  <form class="form" [formGroup]="form">
+    <div class="row row--flex">
+      <div class="col col--md-100 width_100">
+        <div class="row row--flex row--flex-space-between row--mb-20 row--sm-block">
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+                <p class="form__label">
+                  Nombre
+                </p>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form__control"
+                  placeholder="Ejemplo: Casa, Officina"
+                  [ngClass]="{ 'form__control--invalid': submitted && f.name.errors,
+                  'form__control--disabled': loading }"/>
+            </div>
+          </div>
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+                <p class="form__label">
+                  País
+                </p>
+                <input
+                  type="text"
+                  formControlName="country"
+                  class="form__control"
+                  [ngClass]="{'form__control--invalid': submitted && f.country.errors,
+                  'form__control--disabled': true }"/>
+            </div>
+          </div>
+        </div>
+        <div class="row row--flex row--flex-space-between row--mb-20 row--sm-block">
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+              <p class="form__label">
+                Estado
+              </p>
+              <select class="form__control" formControlName="id_state" 
+              [ngClass]="{'form__control--invalid': submitted && f.id_state.errors,
+              'form__control--disabled': loading }">
+                <option disabled selected [ngValue]="''" hidden>Selecciona un estado</option>
+                <option *ngFor="let state of arr_states" [ngValue] = "state.id_state_mexico">
+                  {{state.name_state}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+              <p class="form__label">
+                Ciudad
+              </p>
+              <input
+                type="text"
+                class="form__control"
+                placeholder="Ciudad" 
+                formControlName="city"
+                [ngClass]="{ 'form__control--invalid': submitted && f.city.errors,
+                'form__control--disabled': loading }"/>
+            </div>
+          </div>
+        </div>
+        <div class="row row--flex row--flex-space-between row--mb-20 row--sm-block">
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+              <p class="form__label">
+                  Dirección
+              </p>
+              <input
+                type="email"
+                class="form__control"
+                formControlName="address"
+                placeholder="Calle, numero, colonia, municipio, codigo postal"
+                [ngClass]="{'form__control--invalid': submitted && f.address.errors,
+                'form__control--disabled': loading }"/>
+            </div>
+          </div>
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+              <p class="form__label">
+                ZIP
+              </p>
+              <input
+                type="number"
+                class="form__control"
+                placeholder="Codigo Postal" 
+                formControlName="zip"
+                [ngClass]="{ 'form__control--invalid': submitted && f.zip.errors,
+                'form__control--disabled': loading }"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row row--flex row--flex-end row--mt-10">
+      <button class="btn btn--danger row--mr-10 " (click)="closeDialog()">
+        Cancelar
+      </button>
+      <button class="btn btn--blue" (click)="createAddress()">
+        {{ data ? 'Editar': 'Crear' }}
+      </button>
+    </div>
+  </form>
+</div>

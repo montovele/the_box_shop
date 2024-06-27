@@ -1,0 +1,23 @@
+<div class="search_container">
+  <input 
+    type="text"
+    [placeholder]="placeholder"
+    [formControl]="search"
+    [matAutocomplete]="auto"
+    (keyup.enter)="selectionChange(search.value)"/>
+  <div class="search_icon"><i class="ti ti-search"></i></div>
+</div>
+
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let item of data" (onSelectionChange)="selectionChange(item.name)">
+    <div class="option_product">
+      <div>
+        <img [src]="item.image_url" alt="" />
+      </div>
+      <div>
+        <span>{{ item.name }} </span>
+        <span>{{ item.model }}</span>
+      </div>
+    </div>
+  </mat-option>
+</mat-autocomplete>

@@ -1,0 +1,196 @@
+<div class="dialog">
+    <div class="dialog__header">
+        <div class="row row--flex row--flex-between">
+            <h3>
+                Edit Address
+            </h3>
+            <p class="text text--color-red text--semi-bold text--border-bottom pointer"
+                (click)="deleteAddressByAddressId();"
+                *ngIf="!spinnerLoading">
+                Delete Address
+            </p>
+        </div>
+    </div>
+    <div class="dialog__body">
+        <form
+            class="form form--col-2"
+            [formGroup]="form"
+            (ngSubmit)="onSubmit();">
+            <div class="form__group form__group--span-3">
+                <p class="form__label" *ngIf="!loading">
+                    Name
+                    <span class="required">
+                        *
+                    </span>
+                </p>
+                <input
+                    type="text"
+                    class="form__control form__control--capitalize"
+                    placeholder="Example: Office Address"
+                    formControlName="name"
+                    [readonly]="spinnerLoading"
+                    [ngClass]="{
+                        'form__control--invalid': submitted && f.name.errors,
+                        'form__control--disabled': spinnerLoading
+                    }" 
+                    *ngIf="!loading" />
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group form__group--span-3">
+                <p class="form__label" *ngIf="!loading">
+                    Phone Number
+                </p>
+                <input
+                    type="text"
+                    class="form__control"
+                    placeholder="Phone Number"
+                    formControlName="telephone1"
+                    maxlength="10"
+                    OnlyNumber
+                    [readonly]="spinnerLoading"
+                    [ngClass]="{
+                        'form__control--disabled': spinnerLoading
+                    }"
+                    *ngIf="!loading"/>
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group form__group--span-3">
+                <p class="form__label" *ngIf="!loading">
+                    Street #1 Name
+                    <span class="required">
+                        *
+                    </span>
+                </p>
+                <input
+                    type="text"
+                    class="form__control form__control--capitalize"
+                    placeholder="Street #1 Name"
+                    formControlName="street1"
+                    [readonly]="spinnerLoading"
+                    [ngClass]="{
+                        'form__control--invalid': submitted && f.street1.errors,
+                        'form__control--disabled': spinnerLoading
+                    }"
+                    *ngIf="!loading"/>
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group form__group--span-3">
+                <p class="form__label" *ngIf="!loading">
+                    Street #2
+                </p>
+                <input
+                    type="text"
+                    class="form__control form__control--capitalize"
+                    placeholder="Street #2 Name"
+                    formControlName="street2"
+                    [readonly]="spinnerLoading"
+                    [ngClass]="{
+                        'form__control--disabled': spinnerLoading
+                    }"
+                    *ngIf="!loading" />
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group form__group--span-3">
+                <p class="form__label" *ngIf="!loading">
+                    Country
+                </p>
+                <input
+                    type="text"
+                    class="form__control form__control--disabled"
+                    placeholder="Country"
+                    value="USA"
+                    formControlName="country"
+                    readonly />
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group">
+                <p class="form__label" *ngIf="!loading">
+                    State
+                    <span class="required">
+                        *
+                    </span>
+                </p>
+                <select
+                    class="form__control form__control--select pointer"
+                    formControlName="state"
+                    [ngClass]="{
+                        'form__control--invalid': submitted && f.state.errors,
+                        'form__control--disabled': spinnerLoading
+                    }"
+                    *ngIf="!loading">
+                    <option value="" disabled>Choose state</option>
+                    <option
+                        [ngValue]="state.abbreviation"
+                        *ngFor="let state of states">
+                        {{ state.name }}
+                    </option>
+                </select>
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group">
+                <p class="form__label" *ngIf="!loading">
+                    City
+                    <span class="required">
+                        *
+                    </span>
+                </p>
+                <input
+                    type="text"
+                    class="form__control form__control--capitalize"
+                    placeholder="City"
+                    formControlName="city"
+                    [readonly]="spinnerLoading"
+                    [ngClass]="{
+                        'form__control--invalid': submitted && f.city.errors,
+                        'form__control--disabled': spinnerLoading
+                    }"
+                    *ngIf="!loading"/>
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group">
+                <p class="form__label" *ngIf="!loading">
+                    Zip Code
+                    <span class="required">
+                        *
+                    </span>
+                </p>
+                <input
+                    type="text"
+                    class="form__control"
+                    placeholder="Zip Code"
+                    formControlName="postalCode"
+                    maxlength="5"
+                    OnlyNumber
+                    [readonly]="spinnerLoading"
+                    [ngClass]="{
+                        'form__control--invalid': submitted && f.postalCode.errors,
+                        'form__control--disabled': spinnerLoading
+                    }"
+                    *ngIf="!loading"/>
+                <app-skeleton widthP="100" height="40" *ngIf="loading"></app-skeleton>
+            </div>
+            <div class="form__group form__group--custom form__group--span-3" *ngIf="!loading">
+                <button
+                        type="button"
+                        class="btn btn--gray"
+                        (click)="closeDialog();">
+                        Cancel
+                </button>
+                <button
+                    type="submit"
+                    class="btn btn--blue btn--start"
+                    [disabled]="loading"
+                    [class.btn--disabled]="loading">
+                        <span *ngIf="!spinnerLoading">
+                            Update Address
+                        </span>
+                        <mat-spinner
+                            [diameter]="18"
+                            style="margin: 0 auto;"
+                            *ngIf="spinnerLoading">
+                        </mat-spinner>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

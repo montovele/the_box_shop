@@ -1,0 +1,28 @@
+<style>
+  .swiper-button-prev {
+  color: red !important;
+}
+</style>
+<div class="gallery_wrap">
+
+  <swiper style="--swiper-navigation-color: rgb(18, 83, 187);--swiper-pagination-color: rgb(18, 83, 187);margin-bottom: 10px;font-weight: 900;" [spaceBetween]="10"
+    [navigation]="true" [thumbs]="{ swiper: thumbsSwiper }" class="mySwiper2">
+    <ng-template swiperSlide *ngFor="let image of images" style="width: 100% !important;">
+      <img [src]="image.image_url" />
+    </ng-template>
+  </swiper>
+
+  <swiper (swiper)="thumbsSwiper = $event" [spaceBetween]="10" [slidesPerView]="views" [freeMode]="true"
+    [watchSlidesProgress]="true" class="mySwiper" [navigation]="true" style="font-weight: 900;">
+    <div class="swiper-button-next" style="color: red !important;"></div>
+    <div class="swiper-button-prev"></div>
+    <ng-template swiperSlide *ngFor="let image of images" style="width: 100% !important;">
+      <div class="img_container">
+        <img [src]="image.image_url" />
+      </div>
+    </ng-template>
+  </swiper>
+
+</div>
+
+

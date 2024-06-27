@@ -1,0 +1,37 @@
+@mixin screen($break-point) {
+    @media (max-width: $break-point) {
+      @content;
+    }
+  }
+  
+  @mixin media-query($break-point) {
+    @if $break-point==xlg {
+      @media (max-width: 1400px) {
+        @content;
+      }
+    }
+  
+    @if $break-point==lg {
+      @media (max-width: 1080px) {
+        @content;
+      }
+    }
+  
+    @if $break-point==md {
+      @media (max-width: 900px) {
+        @content;
+      }
+    }
+  
+    @if $break-point==sm {
+      @media (max-width: 600px) {
+        @content;
+      }
+    }
+  
+    @if $break-point==xsm {
+      @media (max-width: 450px) {
+        @content;
+      }
+    }
+  }

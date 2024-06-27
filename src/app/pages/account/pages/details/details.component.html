@@ -1,0 +1,96 @@
+<div class="row row--flex row--flex-space-between row--mb-20">
+  <h3 class="text text--xl text--bold">
+    Mi perfil
+  </h3>
+  <button class="btn btn--blue" (click)="editUser()">
+    <span *ngIf="!edit_user">Guardar</span>
+    <span *ngIf="edit_user">Editar</span>
+  </button>
+</div>
+<div class="row row--border-bottom row--mb-20">
+  <p class="text text--semi-bold">
+    Información Personal
+  </p>
+  
+</div>
+<div class="row row--mb-20">
+  <form class="form" [formGroup]="form">
+    <div class="row row--flex">
+      <div class="col col--49 col--md-100">
+        <div class="row row--flex row--flex-space-between row--mb-20 row--sm-block">
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+                <p class="form__label">
+                  Nombre(s)
+                </p>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form__control"
+                  placeholder="Nombre"
+                  [class.form__control--invalid]="submitted && f.name.errors" 
+                  [ngClass]="{ 'form__control--disabled': edit_user }"/>
+            </div>
+          </div>
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+                <p class="form__label">
+                  Apellido
+                </p>
+                <input
+                  type="text"
+                  formControlName="lastname"
+                  class="form__control"
+                  placeholder="Segundo Nombre" 
+                  [class.form__control--invalid]="submitted && f.lastname.errors"
+                  [ngClass]="{'form__control--disabled': edit_user }"/>
+            </div>
+          </div>
+        </div>
+        <div class="row row--flex row--flex-space-between row--mb-20 row--sm-block">
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+              <p class="form__label">
+                Fecha de nacimiento
+              </p>
+              <input
+                type="date"
+                [ngModel]="user_information.birthday | date:'yyyy-MM-dd'"
+                class="form__control"
+                placeholder="Fecha de nacimiento"
+                formControlName="birthday"
+                [ngClass]="{ 'form__control--disabled': edit_user }"/>
+            </div>
+          </div>
+          <div class="col col--49 col--sm-100">
+            <div class="form__group form__group--mb-20">
+              <p class="form__label">
+                Numero de telefono
+              </p>
+              <input
+                type="text"
+                class="form__control"
+                placeholder="Numero de telefono" 
+                formControlName="phone"
+                [ngClass]="{ 'form__control--disabled': edit_user }"/>
+            </div>
+          </div>
+        </div>
+        <div class="row row--100 row--mb-20">
+          <div class="form__group form__group--mb-20">
+            <p class="form__label">
+                Correo electronico
+            </p>
+            <input
+              type="email"
+              class="form__control"
+              formControlName="email"
+              placeholder="Correo electronico"
+              [class.form__control--invalid]="submitted && f.email.errors" 
+              [ngClass]="{'form__control--disabled': edit_user }"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

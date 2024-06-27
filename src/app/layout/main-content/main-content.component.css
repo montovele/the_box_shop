@@ -1,0 +1,30 @@
+.wrap_main_component{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap-menu-navigation {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  height: auto;
+  background-color: rgb(18, 83, 187);
+}
+
+.page{
+  padding-top: 140px;
+  background-color: #f2f2f8;
+  height: 100%;
+  padding-bottom: 70px;
+}
+
+.wrap-footer {
+  background-color: #f9fafc;
+}
+
+@media screen and (max-width: 600px) {
+  .page{
+    padding-top: 70px;
+  }
+}

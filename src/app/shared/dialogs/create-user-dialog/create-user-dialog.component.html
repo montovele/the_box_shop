@@ -1,0 +1,180 @@
+<div class="dialog">
+  <div class="dialog__header">
+      <h3>
+          Create User
+      </h3>
+  </div>
+  <div class="dialog__body">
+      <form class="form form--col-2" [formGroup]="form" 
+      (ngSubmit)="submitForm()">
+          <div class="form__group">
+            <p class="form__label">
+                First Name
+              <span class="required">
+                  *
+              </span>
+            </p>
+            <input
+                type="text"
+                class="form__control form__control--capitalize"
+                placeholder="First Name"
+                formControlName="name"
+                [readonly]="loading"
+                [ngClass]="{
+                    'form__control--invalid': submitted && f.name.errors,
+                    'form__control--disabled': loading
+                }" />
+        </div>
+        <div class="form__group">
+          <p class="form__label">
+              Last Name
+              <span class="required">
+                  *
+              </span>
+          </p>
+          <input
+              type="text"
+              class="form__control form__control--capitalize"
+              placeholder="Last Name"
+              formControlName="lastname"
+              [readonly]="loading"
+              [ngClass]="{
+                  'form__control--invalid': submitted && f.lastname.errors,
+                  'form__control--disabled': loading
+              }" />
+        </div>
+        <div class="form__group form__group--span-3">
+          <p class="form__label">
+              Email
+              <span class="required">
+                  *
+              </span>
+          </p>
+          <input
+              type="text"
+              class="form__control"
+              placeholder="Email"
+              formControlName="email"
+              [readonly]="loading"
+              [ngClass]="{
+                  'form__control--invalid': (submitted && f.email.errors) || email_invalid,
+                  'form__control--disabled': loading
+              }" />
+        </div>
+        <div class="form__group form__group--span-3">
+          <p class="form__label">
+              Phone
+              <span class="required">
+                  *
+              </span>
+          </p>
+          <input
+              type="text"
+              class="form__control form__control--capitalize"
+              placeholder="Phone"
+              formControlName="phone"
+              OnlyNumber
+              [readonly]="loading"
+              [ngClass]="{
+                  'form__control--invalid': submitted && f.phone.errors,
+                  'form__control--disabled': loading
+              }" />
+        </div>
+        <div class="form__group form__group--span-3">
+          <p class="form__label">
+              User Type
+              <span class="required">
+                *
+            </span>
+          </p>
+          <select
+            class="form__control form__control--select pointer"
+            formControlName="user_type_id"
+            [ngClass]="{
+                'form__control--invalid': submitted && f.user_type_id.errors,
+                'form__control--disabled': loading
+            }">
+            <option value="" selected disabled>Choose user type</option>
+            <option value="3">Client</option>
+            <option value="2">Admin</option>
+            <option value="1">Super Admin</option>
+         </select>
+        </div>
+        <div class="form__group">
+          <p class="form__label">
+              Country
+            <span class="required">
+                *
+            </span>
+          </p>
+          <select
+            class="form__control form__control--select pointer"
+            formControlName="country"
+            [ngClass]="{
+                'form__control--invalid': submitted && f.country.errors,
+                'form__control--disabled': loading
+            }">
+            <option value="" selected disabled>Choose Country</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Mexico">USA</option>
+ 
+         </select>
+        </div>
+        <div class="form__group">
+          <p class="form__label">
+              State
+            <span class="required">
+                *
+            </span>
+          </p>
+          <select
+            class="form__control form__control--select pointer"
+            formControlName="state"
+            [ngClass]="{
+                'form__control--invalid': submitted && f.state.errors,
+                'form__control--disabled': loading
+            }">
+            <option value="" selected disabled>Choose State</option>
+            <option value="Mexico">BC</option>
+            <option value="Mexico">Test</option>
+ 
+         </select>
+        </div>
+        <div class="form__group form__group--span-3">
+          <p class="form__label">
+              City
+              <span class="required">
+                  *
+              </span>
+          </p>
+          <input
+              type="text"
+              class="form__control form__control--capitalize"
+              placeholder="City"
+              formControlName="city"
+              [readonly]="loading"
+              [ngClass]="{
+                  'form__control--invalid': submitted && f.city.errors,
+                  'form__control--disabled': loading
+              }" />
+        </div>
+    
+        <div class="form__group form__group--custom form__group--span-3">
+              <button type="button" class="btn btn--gray" (click)="closeDialog()">Cancel </button>
+              <button
+                      type="submit"
+                      class="btn btn--blue btn--start"
+                      [class.btn--disabled]="loading">
+                      <span>
+                          Save User
+                      </span>
+                      <mat-spinner
+                          [diameter]="18"
+                          style="margin: 0 auto;"
+                          *ngIf="loading">
+                      </mat-spinner>
+              </button>
+        </div>
+      </form>
+  </div>
+</div>

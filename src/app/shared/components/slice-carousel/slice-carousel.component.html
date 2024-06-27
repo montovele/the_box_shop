@@ -1,0 +1,41 @@
+<!-- <swiper
+        style="--swiper-navigation-color:white;--swiper-pagination-color: #EB6D2D;"
+        [centeredSlides]="true"
+        [autoplay]="{
+        delay: 2500,
+        disableOnInteraction: false}"
+        [pagination]="{
+        clickable: true}"
+        [navigation]="true"
+        [effect]="'fade'"
+        class="mySwiper">
+        <ng-template swiperSlide>
+            <img src="https://wcp-images.s3.us-west-1.amazonaws.com/wcp/pictures/assets/home/1.banner/banner_wcp-min.png" 
+            alt="Wholesale Cell Phones"
+            (load)="onLoad()"
+            class="animate__animated animate__fadeIn"
+            >
+        </ng-template>
+</swiper> -->
+<swiper
+  [slidesPerView]="1"
+  [spaceBetween]="12"
+  [navigation]="true"
+  [loop]="true"
+  [autoplay]="{
+    delay: 5000,
+    disableOnInteraction: false
+  }"
+  [pagination]="{
+    clickable: true
+  }"
+  [navigation]="true"
+  class="Swiper"
+  style="--swiper-navigation-color:white;--swiper-pagination-color: white;"
+>
+  <ng-template swiperSlide *ngFor="let slide of banner_slides">
+    <div class="slide" (click)="goToLink(slide.url)">
+      <img [src]="slide.path_public" alt="" />
+    </div>
+  </ng-template>
+</swiper>

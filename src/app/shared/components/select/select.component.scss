@@ -1,0 +1,38 @@
+.container {
+  flex: 1;
+  border-radius: 8px;
+  position: relative;
+
+  select {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #d7dfe8;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #2D3748;
+    transition: 0.3s ease all;
+    position: relative;
+    text-transform: capitalize;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    padding-right: 25px;
+
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpY29uIGljb24tdGFibGVyIGljb24tdGFibGVyLWNoZXZyb24tZG93biIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggc3Ryb2tlPSJub25lIiBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIj48L3BhdGg+PHBvbHlsaW5lIHBvaW50cz0iNiA5IDEyIDE1IDE4IDkiPjwvcG9seWxpbmU+PC9zdmc+');
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%, 0 0;
+    background-size: 20px auto, 100%;
+  }
+
+  .disabled {
+    border-color: #d2d4de;
+    background-color: #e6e9f4;
+    color: #7e84a3;
+    cursor: not-allowed;
+  }
+}

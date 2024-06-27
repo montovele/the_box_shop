@@ -1,0 +1,375 @@
+/* Containers */
+.cart_cont{
+  /* background-color: yellow; */
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 10px;
+  height: auto;
+}
+.cart{
+  /* background-color: red; */
+  min-height: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 30px;
+}
+.wrap_providers{
+  flex: 1;
+  /* background-color: aqua; */
+  min-height: 500px;
+}
+.cart_cont_title{
+  margin-bottom: 20px;
+}
+.cart_title{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.cart_subtitle{
+  margin: 0;
+  font-size: 13px;
+}
+
+
+/* Provider */
+.provider{
+  width: 100%;
+  background-color: #ffffff;
+  min-height: 200px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+  display: flex;
+  flex-direction: column;
+}
+.provider_head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, rgb(82 148 255) 0%, rgb(0 106 220) 100%);
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    height: 40px;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.provider_head > span{
+  font-weight: 600;
+}
+.provider_body{
+  flex: 1;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.provider_totals{
+  background-color: #dadada;
+  height:110px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 20px;
+  column-gap: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.totals_items{
+  width: 90px;
+  height: 50px;
+}
+.totals_summary{
+  width: 230px;
+  height: auto;
+}
+.total_quantity {
+  font-size: 13px;
+  display: block;
+}
+.total_provider_item{
+  display: flex;
+  flex-direction: row;
+}
+.total_provider_title{
+  text-align: right;
+  width: 100px;
+}
+.total_provider_title > span {
+  font-size: 13px;
+  font-weight: 600;
+}
+.total_provider_value_title{
+  font-size: 15px;
+  font-weight: 500;
+}
+.total_provider_value{
+  flex:1;
+  text-align: right;
+}
+.empty_cart{
+  background-color: white;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gainsboro;
+}
+
+/* Items */
+.prod_item{
+  border-bottom: 1px solid gainsboro;
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  align-items: center;
+  justify-content: space-around;
+  padding-right: 20px;
+  position: relative;
+}
+.item_image{
+  max-width: 150px;
+  border-right: 1px solid gainsboro;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+}
+.item_image > img{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-height: auto;
+  max-height: 100%;
+  min-width: 90%;
+  max-width: 90%;
+  transform: translate(-50%, -50%);
+}
+.item_info{
+  flex: 1;
+}
+.item_qty_container{
+  width: auto;
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5px;
+}
+.item_qty_input{
+  width: 50px;
+  text-align: center;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  border-left: none;
+  border-right: none;
+  font-size: 13px;
+}
+.item_minus{
+  cursor: pointer;
+  width: 20px;
+  border: 1px solid gainsboro; 
+  text-align: center;
+}
+.item_minus:hover{
+  background-color: #066cff;
+  color: white;
+}
+.item_plus{
+  cursor: pointer;
+  width: 20px;
+  border: 1px solid gainsboro;
+  text-align: center;
+}
+.item_plus:hover{
+  color: white;
+  background-color: #066cff;
+}
+.item_prices{
+  text-align: end;
+  width: 230px;
+
+}
+.item_price{
+  display: block;
+}
+.item_subtotal_price{
+  font-size: 12px;
+  display: block;
+}
+.item_name{
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.item_model{
+  display: block;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #5c5c5c;
+  margin-bottom: 4px;
+}
+.item_stock{
+  display: block;
+  font-size: 12px;
+  /* color: #5c5c5c; */
+}
+.item_remove_abs{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+.item_remove{
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  /* width: 0px; */
+  overflow: hidden;
+}
+.remove_icon{
+  color: black;
+  font-size: 15px;
+  display: block;
+}
+.remove_icon:hover ~ .item_remove{
+  width: 100px;
+  color: white;
+}
+
+
+/* Totals */
+
+.wrap_totals{
+  width: 400px;
+  min-height: 300px;
+  height: 300px;
+  border: 1px solid gainsboro;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.gran_totals_wrap{
+  width: 100%;
+  height: auto;
+}
+.totals_head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgb(82 148 255) 0%, rgb(0 106 220) 100%);
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  height: 40px;
+  color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.totals_head > span{
+  font-weight: 600;
+}
+.totals_body{
+  padding: 20px;
+  flex: 1;
+}
+.gran_total_cont{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.grand_total_title{
+  text-align: left;
+}
+.grand_total_title > span{
+  font-weight: 600;
+  font-size: 14px;
+}
+.grand_total_value{
+  text-align: right;
+}
+.grand_total_value_title{
+  
+}
+.go_pay{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}
+.payment_button{
+  padding: 15px;
+  color: white;
+  font-size: 15px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  background: linear-gradient(180deg, rgb(13 62 142) 0%, rgb(0 106 220) 100%);
+  border: none;
+  color: white;
+  width: 100%;
+}
+.payment_button:hover{
+  box-shadow: 0 0 6px rgb(35 173 255);
+}
+.disabled_pay{
+  cursor:not-allowed;
+  background-color: gray;
+}
+.disabled_pay:hover{
+  background-color: gray;
+}
+.totals_footer{
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.complete_icon{
+  position: absolute;
+  top: 10px;
+  bottom: 0;
+  right: 30px;
+  color: white;
+  transition: right 0.3s ease;
+}
+.payment_button:hover ~ .complete_icon{
+  right: 25px;
+}
+.sipinner_wrap{
+  width: 100px;
+  position: relative;
+}
+
+
+@media screen and (max-width: 600px) {
+  .cart{
+    display: block;
+  }
+  .wrap_totals {
+    width: 100%;
+    min-height: 100%;
+  }
+  .wrap_providers{
+    margin-bottom: 20px;
+    min-height: auto;
+  }
+}

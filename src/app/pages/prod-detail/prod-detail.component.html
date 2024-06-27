@@ -1,0 +1,196 @@
+<div class="wrap-container">
+  <div class="container">
+    <div class="col">
+      <div class="product-details-container">
+        <div class="col">
+          <div class="row row--mb-10">
+            <p class="bread_crumb text text--sm text--bold pointer">
+              <span class="bread_item" *ngIf="prod_detail.type">
+                {{ prod_detail.type }}
+              </span>
+              <span class="material-symbols-outlined bread_arrow">keyboard_arrow_right</span>
+              <span class="bread_item" *ngIf="prod_detail.brand">
+                {{ prod_detail.brand }}
+              </span>
+              <span class="material-symbols-outlined bread_arrow">keyboard_arrow_right</span>
+              <span class="bread_item" *ngIf="prod_detail.model">
+                {{ prod_detail.model }}
+              </span>
+            </p>
+            <p class="text text--mb-10">
+              {{ prod_detail.name }}
+            </p>
+            <div class="row row--flex">
+              <p class="text text--sm text--bold text--mr-10" *ngIf="prod_detail.model">
+                Modelo:
+                <span class="text text--sm text--regular">
+                  {{ prod_detail.model }}
+                </span>
+              </p>
+              <p class="text text--sm text--bold" *ngIf="prod_detail.upc">
+                UPC:
+                <span class="text text--sm text--regular"> {{ prod_detail.upc }} </span>
+              </p>
+            </div>
+          </div>
+          <div class="product-gallery-container">
+            <div class="gallery">
+              <app-image-gallery [images]="prod_detail.images"></app-image-gallery>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row" *ngIf="arr_distributors.length > 0">
+            <div class="row row--flex row--flex-align-center">
+              <p class="text text--background text--background-purple text--mr-5">Nuevo</p>
+            </div>
+            <div class="row row--flex row--flex-align-center">
+              <h2 class="product_description">{{ prod_detail.description }}</h2>
+            </div>
+            <p class="text text--2xl text--bold">
+              {{ arr_distributors[0].price | currency }}
+            </p>
+            <div class="return-info-container">
+              <div class="col col--mr-10">
+                <span class="material-icons-outlined"> keyboard_return </span>
+              </div>
+              <div class="col">
+                <p class="text text--bold text--sm">Devolución de producto de 15 días.</p>
+                <p class="text text--xs">Regresa tu producto facíl y rápido.</p>
+              </div>
+            </div>
+          </div>
+          <div class="row row--mb-20">
+            <div class="row row--flex row--flex-align-center padding_insure">
+              <div class="col col--mr-10">
+                <span class="material-icons-outlined"> gpp_good </span>
+              </div>
+              <div class="col">
+                <p class="text text--sm text-bold">Tu producto está asegurado</p>
+                <p class="text text--sm text--regular text--blue pointer">Más información</p>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="arr_attributes.length > 0">
+            <p class="text text--sm text--bold text--bold">Especificaciones</p>
+            <div class="specifications_gray">
+              <div class="spec" *ngIf="prod_detail.model">
+                <p class="text atr_specification">Modelo</p>
+                <p class="text atr_specification">
+                  {{ prod_detail.model }}
+                </p>
+              </div>
+              <div class="spec" *ngIf="prod_detail.upc">
+                <p class="text atr_specification">UPC</p>
+                <p class="text atr_specification">
+                  {{ prod_detail.upc }}
+                </p>
+              </div>
+              <div class="spec" *ngIf="prod_detail.part_num">
+                <p class="text atr_specification">Num. de parte</p>
+                <p class="text atr_specification">
+                  {{ prod_detail.part_num }}
+                </p>
+              </div>
+              <div class="spec" *ngFor="let atr of arr_attributes">
+                <p class="text atr_specification">
+                  {{ atr.attribute }}
+                </p>
+                <p class="text atr_specification">
+                  {{ atr.value }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row--mb-20">
+            <div class="row row--mb-10">
+              <p class="text text--sm text--bold">Disponibilidad</p>
+            </div>
+            <div class="contie">
+              <div class="plans" *ngFor="let dist of arr_distributors; let y = index">
+                <div class="bodega_head">
+                  <span class="text--white">Bodega {{ dist.id_provider }}</span>
+                  <span>{{ dist.best_price | currency }}</span>
+                </div>
+
+                <div class="plan basic-plan">
+                  <div
+                    class="plan-content"
+                    *ngFor="let bodega of dist.items; let x = index"
+                    [class.plan_selected]="dist.selected_qty > 0"
+                  >
+                    <div class="plan-details">
+                      <div class="warehouse_quantity">
+                        <span>{{ bodega.state }}</span>
+                        <select
+                          [ngClass]="{ 'form__control--disabled': cart_added }"
+                          [disabled]="cart_added"
+                          class="form__control custom_select"
+                          (change)="changeDistQuantity(y, x, $event.target.value)"
+                        >
+                          <option *ngFor="let in of counter(bodega.stock); let i = index">{{ i }}</option>
+                        </select>
+                      </div>
+                      <div class="warp_dist_prices">
+                        <div class="dist_price">
+                          <p class="dist_price_txts"><strong>Precio:</strong></p>
+                          <p class="row--ml-5">{{ bodega.price | currency }}</p>
+                        </div>
+                        <div class="dist_price">
+                          <p class="dist_price_txts"><strong>Disponibles:</strong></p>
+                          <p class="row--ml-5">{{ bodega.stock }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row--mb-2">
+            <div class="row row--mb-10">
+              <span class="nothing_selected" *ngIf="nothing_selected">Selecciona un distribuidor</span>
+              <button class="btn btn_add_cart" (click)="addCart()">
+                <span class="add_cart_wrap" *ngIf="!loading_adding && !cart_added">
+                  <span class="material-icons ctm_icon"> shopping_cart </span>
+                  Agregar al carrito
+                </span>
+                <span class="add_loading_wrap" *ngIf="loading_adding">
+                  <mat-spinner [diameter]="18" style="margin: 0 auto"></mat-spinner>
+                  Agregando
+                </span>
+
+                <span class="add_loading_wrap" *ngIf="cart_added && !loading_adding">
+                  <span class="material-icons ctm_icon"> done </span>
+                  Agregado
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="description" *ngIf=prod_detail.description_2>
+        <h2 class="sec_title">Descripción</h2>
+        <div class="prod_description" [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(prod_detail.description_2)"></div>
+      </div>
+      <div class="specifications" *ngIf="arr_icecat">
+        <h2 class="sec_title">Caracteristicas</h2>
+        <div class="wrap_spec" *ngIf="arr_icecat">
+          <div class="spec_item" *ngFor="let item of arr_icecat.FeaturesGroups | keyvalue">
+            <div class="spec_header">
+              <span class="spec_section">{{ item.value.FeatureGroup.Name.Value }}</span>
+            </div>
+            <div class="spec_body">
+              <div class="spec" *ngFor="let spec of item.value.Features">
+                <span class="spec_key">{{ spec.Feature.Name.Value }}</span>
+                <span class="spec_value">{{ spec.PresentationValue }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

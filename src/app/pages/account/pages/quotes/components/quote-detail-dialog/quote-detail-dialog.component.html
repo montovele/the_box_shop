@@ -1,0 +1,177 @@
+<div class="dialog">
+  <div class="dialog__header">
+    <h4>Detalle de cotizacion</h4>
+    <i class="ti ti-x" (click)="closeDialog()"></i>
+  </div>
+  <div class="dialog__body">
+    <div class="dialog__body__section_1">
+      <div class="order_header">
+        <div>
+          <p>{{ quote_detail.quote_number }}</p>
+          <p>{{ quote_detail.created_date | date: "mediumDate" }}</p>
+        </div>
+        <div>
+          <p>{{ quote_detail.status }}</p>
+        </div>
+      </div>
+      <div class="order_information" [formGroup]="form">
+        <p>Informacion de cotizacion</p>
+        <div>
+          <div class="form_group">
+            <label for="">Nombre</label>
+            <input type="text" formControlName="name" />
+          </div>
+          <div class="form_group">
+            <label for="">Apellidos</label>
+            <input type="text" formControlName="last_name" />
+          </div>
+          <div class="form_group email">
+            <label for="">Email</label>
+            <input type="text" formControlName="email" />
+          </div>
+          <div class="form_group">
+            <label for="">Telefono</label>
+            <input type="text" formControlName="phone" />
+          </div>
+          <div class="form_group">
+            <label for="">Direccion</label>
+            <input type="text" formControlName="address" />
+          </div>
+          <div class="form_group">
+            <label for="">Estado</label>
+            <app-select [config]="select_state" [disable]="true"></app-select>
+          </div>
+          <div class="form_group">
+            <label for="">City</label>
+            <input type="text" formControlName="city" />
+          </div>
+          <div class="form_group">
+            <label for="">Country</label>
+            <input type="text" formControlName="country" />
+          </div>
+          <div class="form_group">
+            <label for="">Codigo Postal</label>
+            <input type="text" formControlName="zip" />
+          </div>
+        </div>
+      </div>
+      <div class="order_summary">
+        <p>Detalle de compra</p>
+        <div>
+          <div>
+            <div>Subtotal</div>
+            <div>{{ quote_detail.subtotal | currency }}</div>
+          </div>
+          <div>
+            <div>IVA</div>
+            <div>{{ quote_detail.total_iva | currency }}</div>
+          </div>
+          <div>
+            <div>Envio</div>
+            <div>{{ quote_detail.shipping_cost | currency }}</div>
+          </div>
+          <div>
+            <div>Total</div>
+            <div>{{ quote_detail.total | currency }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dialog__body__section_2">
+      <div>
+        <div>Producto</div>
+        <div>Cantidad</div>
+        <div>P/U</div>
+        <div>Total</div>
+      </div>
+      <div class="products">
+        <div class="products__item" *ngFor="let product of quote_detail.products">
+          <div class="products__item__info">
+            <div class="img_container">
+              <img [src]="product.image_url" alt="" />
+            </div>
+            <div>
+              <p>{{ product.name }}</p>
+              <p>{{ product.model }}</p>
+            </div>
+          </div>
+          <div>
+            {{ product.quantity }}
+          </div>
+          <div>
+            {{ product.price | currency }}
+          </div>
+          <div>
+            {{ product.price * product.quantity | currency }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog__footer">
+    <button class="btn btn--danger row--mr-10" (click)="closeDialog()">Cerrar</button>
+    <button
+      class="btn btn--blue"
+      (click)="getCheckout(quote_detail.id_quote)"
+      [disabled]="quote_detail.id_status != 1"
+      [class.btn--gray]="quote_detail.id_status != 1"
+    >
+      Crear Orden
+    </button>
+  </div>
+</div>
+
+<!-- <div class = "main" *ngIf="quote_detail">
+    <div class= " header ">
+        <h2>{{ quote_detail.quote_number }}</h2>
+        <span class="material-icons-outlined" (click) = "closeDialog()">
+            close
+        </span>
+    </div>
+    <div class = "body">
+        <div class = "product" *ngFor = "let product of quote_detail.products">
+            <div>
+                <div class = "product_image">
+                    <img [src]="product.image_url" alt="">
+                </div>
+                <div class = "product_info">
+                    <div class = "product_name">
+                        <p>{{ product.name }}</p>
+                        <p>{{ product.model }}</p>
+                    </div>
+                    <p>Cantidad: {{ product.selected_qty }}</p>
+                    <p>Precio: {{ product.price | currency }}</p>
+                </div>
+            </div>
+            <div>
+                <p>{{ product.quantity * product.price | currency}}</p>
+            </div>
+        </div>
+    </div>
+    <div class = "totals">
+        <div>
+            <p>Subtotal</p>
+            <p>{{ quote_detail.subtotal | currency }}</p>
+        </div>
+        <div>
+            <p>I.V.A</p>
+            <p>{{ quote_detail.total_iva | currency }}</p>
+        </div>
+        <div>
+            <p>Envio</p>
+            <p>{{ quote_detail.shipping_cost | currency }}</p>
+        </div>
+        <div>
+            <p>Total</p>
+            <p>{{ quote_detail.total | currency }}</p>
+        </div>
+    </div>
+    <div  class = "buttons">
+        <button class="btn btn--danger row--mr-10 " (click)="closeDialog()">
+            Cerrar
+          </button>
+          <button class="btn btn--blue" (click) = "getCheckout(quote_detail.id_quote)" [disabled] = "quote_detail.id_status != 1" [class.btn--gray] = "quote_detail.id_status != 1">
+            Crear Orden
+          </button>
+    </div>
+</div> -->

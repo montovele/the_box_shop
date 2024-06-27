@@ -1,0 +1,9 @@
+@media only screen and (max-width: 1024px) {
+  .col--md-100 { width: 100% }
+}
+
+@media only screen and (max-width: 480px) {
+  .row--sm-block { display: block }
+  .col--sm-100 { width: 100% }
+  .form__group--mb-20 { margin-bottom: 20px }
+}

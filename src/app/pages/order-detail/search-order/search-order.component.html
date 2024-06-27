@@ -1,0 +1,50 @@
+ 
+<main class = "main">
+    <div class = "form_wrap">
+        <div class = "form">
+            <div class="back" routerLink="/home">
+                <span class="material-icons-outlined blue">
+                  arrow_back
+                </span>
+                <h4>Regresar</h4>
+            </div>
+            <div class = "title">
+                <h4>Busca una orden</h4>
+                <p>Ingresa tu numero de orden y token que recibiste por correo</p>
+            </div>
+            <div class = "inputs_container" [formGroup]="form">
+                <div class = "form__group">
+                    <label for="" class="form__label">Numero de Orden</label>
+                    <input type="text" class="form__control" formControlName="order_number">
+                </div>
+                <div class = "form__group">
+                    <label for="" class="form__label">Token</label>
+                    <input type="number" class="form__control" formControlName="token">
+                    <div class = "error_message">
+                        <p *ngIf="error_message != ''">{{ error_message }}</p>
+                    </div>
+                </div>
+            </div>
+            <button
+                (click) = "searchOrder()"
+                type="submit"
+                class="btn btn--blue btn--100"
+                [disabled]="is_loading"
+                [class.disabled]="is_loading">
+                <span *ngIf="!is_loading">
+                  Buscar Orden
+                </span>
+                <app-loading-spinner
+                  *ngIf="is_loading"
+                  [width]="20"
+                  [height]="20"
+                  [color]="'#FFF'"
+                  [border_width]="2">
+                </app-loading-spinner>
+            </button>
+        </div>
+        <p class = "login_text" (click) = "goToLogin()">
+            Si ya tienes cuenta, <span>inicia sesion</span> para ver el listado completo de tus ordenes.
+        </p>
+    </div>
+</main>

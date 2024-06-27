@@ -1,0 +1,52 @@
+<div class="main">
+  <div class="main__header">
+    <h3 class="text text--xl text--bold">Mis compras</h3>
+    <app-search [placeholder]="'Buscar orden'" (searchChange)="changeSearch($event)"></app-search>
+  </div>
+  <div class="empty_stage" *ngIf="orders.length == 0">
+    <span class="material-symbols-outlined"> shopping_bag </span>
+    <p>No hay Ordenes</p>
+  </div>
+  <ul class="order-list" *ngIf="orders.length > 0">
+    <li class="order-list__item" *ngFor="let order of orders">
+      <!-- desktop -->
+      <div class="row row--flex row--flex-space-between row--md-hidden">
+        <div class="order-list__item__left">
+          <p class="text text--sm text--semi-bold text--mr-30">
+            Fecha de la compra
+            <span class="text text--regular text--dark-gray text--block">
+              {{ order.created_date | date: "mediumDate" }}
+            </span>
+          </p>
+          <p class="text text--sm text--semi-bold text--mr-30">
+            Total de la compra
+            <span class="text text--regular text--bold text--block">
+              {{ order.total | currency }}
+            </span>
+          </p>
+          <p class="text text--sm text--semi-bold">
+            Numero de orden
+            <span class="text text--regular text--bold text--block">
+              {{ order.order_number }}
+            </span>
+          </p>
+          <p class="text text--sm text--semi-bold text--mr-30">
+            Status
+            <span class="text text--regular text--bold text--block">
+              {{ order.order_status }}
+            </span>
+          </p>
+        </div>
+        <div class="col col--flex col--flex-align-center">
+          <a class="btn btn--mr-10" (click)="goToOrderDetails(order)"> Ver orden </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <app-pagination
+    [total_results]="total_results"
+    [limit]="filter_orders.limit"
+    [(page)]="filter_orders.page"
+    (goPage)="getOrders()"
+  ></app-pagination>
+</div>

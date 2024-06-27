@@ -1,0 +1,44 @@
+<div class="wrap-container">
+  <div class="container">
+    <div class="wrap-login">
+      <!-- <div class="row row--flex row--flex-center row--mb-20">
+        <h1 class="text text--bold text--2xl">
+          Digital Box
+        </h1>
+      </div> -->
+      <div class="wrap-form">
+        <div class="row row--flex col--flex-align-center pointer" routerLink="/auth/login">
+          <span class="material-icons-outlined blue">
+            arrow_back
+          </span>
+          <a class="text--blue text--semi-bold pointer" routerLink="/auth/login">
+            <h4 class="blue">Iniciar Sesión</h4>
+          </a>
+        </div>
+        <div class="row row--flex row--mb-10">
+          <h2 class="text text--xl text--semi-bold" *ngIf = "!error">
+            Tu cuenta ha sido verificada
+          </h2>
+          <h2 class="text text--xl text--semi-bold" *ngIf = "error">
+            Tu cuenta No verificada
+          </h2>
+        </div>
+        <div class="row row--flex row--mb-20">
+          <p class="text text--dark-gray" *ngIf = "!error">
+            Bienvenido a <strong>PC Mart</strong>, tu cuenta ha sido verificada. inicia sesión para conocer lás mejores promociones de nuestro sitio.
+          </p>
+          <p class="text text--dark-gray" *ngIf = "error">
+            No se puedo activar la cuenta, posiblemente en link este expirado o no sea valido.
+          </p>
+        </div>
+        <div class="row row--flex row--mt-10 row--flex-center">
+          <div class="gray_circle">
+            <span class="material-icons-outlined green_arrow">
+              done
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

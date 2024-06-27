@@ -1,0 +1,23 @@
+<div class="container" [formGroup]="form" #content [class.mobile]="width_mobile">
+  <div class="section_left">
+    <div>Showing</div>
+    <select name="" id="" class="input_number" formControlName="limit" (change)="changeLimit()" readonly>
+      <option [ngValue]="value" *ngFor="let value of options">{{ value }}</option>
+    </select>
+    <div>of {{ total_results }} results</div>
+  </div>
+  <div class="section_right">
+    <div class="next" (click)="goPrevious()" [class.active]="page > 1">
+      <i class="ti ti-chevron-left"></i>
+      <div>Previous</div>
+    </div>
+    <div class="page">
+      <input type="number" class="input_number" #input_number formControlName="page" />
+      <span>/ {{ total_pages }}</span>
+    </div>
+    <div class="next" (click)="goNext()" [class.active]="page < total_pages">
+      <div>Next</div>
+      <i class="ti ti-chevron-right"></i>
+    </div>
+  </div>
+</div>

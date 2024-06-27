@@ -1,0 +1,5 @@
+<div class="search_container">
+  <i class="ti ti-search"></i>
+  <input type="text" [placeholder]="placeholder" [formControl]="search" />
+  <i class="ti ti-x" *ngIf="search.value" (click)="search.setValue('')"></i>
+</div>

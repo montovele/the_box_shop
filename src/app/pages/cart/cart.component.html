@@ -1,0 +1,161 @@
+<div class="cart_cont">
+  <div class="cart_cont_title">
+    <h2 class="cart_title">Mi carrito</h2>
+    <p class="cart_subtitle">Todos los precios ya incluyen IVA</p>
+  </div>
+  <div class="cart">
+    <div class="wrap_providers" *ngIf="APICart.list_group_cart.length > 0">
+      <div class="provider" *ngFor="let cart of APICart.list_group_cart; let i = index">
+        <div class="provider_head">
+          <span>Bodega {{ i + 1 }}</span>
+          <span>{{ cart.items.length }} Articulo<span *ngIf="cart.items.length > 1">s</span></span>
+        </div>
+        <div class="provider_body">
+          <div class="prod_item" *ngFor="let item of cart.items; let y = index">
+            <div class="item_image" (click)="goToDetail(item)">
+              <img [src]="item.image_url" />
+            </div>
+            <div class="item_info">
+              <span class="item_name">{{ item.name }}</span>
+              <span class="item_model">{{ item.model }}</span>
+              <span class="item_stock">{{ item.stock }} en existencia </span>
+            </div>
+            <div class="item_qty">
+              <span class="item_subtotal_price">Cantidad</span>
+              <div class="item_qty_container">
+                <button class="item_minus" (click)="InputUpdateQty(item, item.selected_qty - 1)">-</button>
+                <input
+                  class="item_qty_input"
+                  type="number"
+                  (keyup)="InputUpdateQty(item, $event.target.value)"
+                  [(ngModel)]="item.selected_qty"
+                />
+                <button class="item_plus" (click)="InputUpdateQty(item, item.selected_qty + 1)">+</button>
+              </div>
+            </div>
+            <div class="item_prices">
+              <span class="item_price"
+                >{{ item.selected_qty }} x <strong>{{ item.price | currency }}</strong></span
+              >
+              <span class="item_subtotal_price">{{ item.price * item.selected_qty | currency }}</span>
+            </div>
+            <div class="item_remove_abs" (click)="deleteCart(item, y)">
+              <span class="material-icons-outlined remove_icon"> close</span>
+            </div>
+          </div>
+        </div>
+        <div class="provider_totals">
+          <div class="totals_items" *ngIf="!loading && !APICart.is_loading">
+            <span class="item_subtotal_price">Total</span>
+            <span class="total_quantity">{{ cart.total_qty_provider }} productos</span>
+          </div>
+          <div class="totals_summary" *ngIf="!loading && !APICart.is_loading">
+            <div class="total_provider_item">
+              <div class="total_provider_title">
+                <span>Subtotal</span>
+              </div>
+              <div class="total_provider_value">
+                <span class="total_provider_value_title">{{ cart.subtotal | currency }}</span>
+              </div>
+            </div>
+            <div class="total_provider_item">
+              <div class="total_provider_title">
+                <span>IVA</span>
+              </div>
+              <div class="total_provider_value">
+                <span class="total_provider_value_title">{{ cart.iva_provider | currency }}</span>
+              </div>
+            </div>
+            <div class="total_provider_item">
+              <div class="total_provider_title">
+                <span>Envio(s)</span>
+              </div>
+              <div class="total_provider_value">
+                <span class="total_provider_value_title">{{ cart.shipping_cost | currency }}</span>
+              </div>
+            </div>
+            <div class="total_provider_item">
+              <div class="total_provider_title">
+                <span>Total</span>
+              </div>
+              <div class="total_provider_value">
+                <span class="total_provider_value_title">{{ cart.total | currency }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sipinner_wrap" *ngIf="loading || APICart.is_loading">
+            <mat-spinner *ngIf="loading || APICart.is_loading" color="accent" [diameter]="25"> </mat-spinner>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap_providers" *ngIf="APICart.list_group_cart.length == 0">
+      <div class="provider_head">
+        <span>Carrito vacio</span>
+      </div>
+      <div class="provider_body">
+        <div class="empty_cart">
+          <span class="material-symbols-outlined"> production_quantity_limits </span>
+          <p class="text text--md text--dark-gray">No tienes productos en tu carrito</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap_totals">
+      <div class="totals_head">
+        <span>Total de compra</span>
+      </div>
+      <div class="totals_body">
+        <div class="gran_totals_wrap">
+          <div class="gran_total_cont">
+            <div class="grand_total_title">
+              <span>Subtotal:</span>
+            </div>
+            <div class="grand_total_value">
+              <span class="total_provider_value_title">{{ APICart.subtotal | currency }}</span>
+            </div>
+          </div>
+          <div class="gran_total_cont">
+            <div class="grand_total_title">
+              <span>IVA:</span>
+            </div>
+            <div class="grand_total_value">
+              <span class="grand_total_value_title">{{ APICart.iva | currency }}</span>
+            </div>
+          </div>
+          <div class="gran_total_cont">
+            <div class="grand_total_title">
+              <span>Envio(s):</span>
+            </div>
+            <div class="grand_total_value">
+              <span class="grand_total_value_title">{{ APICart.shipping | currency }}</span>
+            </div>
+          </div>
+          <div class="gran_total_cont">
+            <div class="grand_total_title">
+              <span>Total:</span>
+            </div>
+            <div class="grand_total_value">
+              <span class="grand_total_value_title">{{ APICart.total | currency }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="totals_footer">
+        <div class="go_pay">
+          <button
+            [routerLink]="['/portal/checkout']"
+            [class.disabled_pay]="APICart.list_group_cart.length == 0 && !loading"
+            [disabled]="APICart.list_group_cart.length == 0 && !loading"
+            class="payment_button"
+          >
+            Completar orden
+          </button>
+          <span class="material-icons-outlined complete_icon"> shopping_cart_checkout </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

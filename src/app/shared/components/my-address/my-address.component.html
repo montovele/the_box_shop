@@ -1,0 +1,26 @@
+<div class="main" style="width: 100%;height: 100%;">
+    <div *ngIf="is_loading" style="display: flex;width: 100%;height: 550px;justify-content: center;align-items: center;">
+        <span class="loader"></span>
+    </div>
+    <div class = "body" *ngIf="!is_loading">
+        <div class = "card" [class.selected_card] = "address_selected == address.id_address && router.url == '/portal/checkout'"*ngFor="let address of addresses;let i = index">
+            <div (click) = "selectAddress(address)">
+                <h3>Direccion {{ i + 1 }}</h3>
+                <span>{{ address.address }}</span>
+                <span>{{ address.city }}, {{address.name_state}}</span>
+                <span>{{ address.zip }}</span>
+            </div>
+            <div *ngIf ="address.default" class = "default">Default</div>
+            <div class="actions">
+                <p (click) = "openDialog(address)">Editar</p>
+                <p *ngIf="!address.default" (click) = "deleteAddress(address.id_address)" class="delete">Borrar</p>
+                <p *ngIf="!address.default" (click) = "updateDefaultAddress(address, i)">Convertir predeterminada</p>
+            </div>
+        </div>
+        <div class = "add_card" (click) = "openDialog(null)" *ngIf="addresses.length < 5">
+            <div>
+                <span>+ </span><span>Agregar nueva direccion</span>
+            </div>
+        </div>
+    </div>
+</div>

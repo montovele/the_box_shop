@@ -1,0 +1,62 @@
+.dialog_main {
+    width: auto;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .header > span {
+    color: #d5d7e3;
+    cursor: pointer;
+  }
+  
+  .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .icon_container {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 20px;
+  }
+  
+  .icon_container > img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .body > div:nth-child(2) {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  
+  .body > div:nth-child(3) {
+    font-size: 16px;
+    line-height: 19px;
+    color: #656565;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    column-gap: 20px;
+  }
+  
+  .btn_pink {
+    height: 39px;
+    max-width: none;
+  }
+  

@@ -1,0 +1,119 @@
+<main class = "main" *ngIf="order_detail">
+    <div class = "container">
+        <div class = "header">
+            <h2>
+                {{ order_detail.order_number}}
+            </h2>
+            <div>
+                <div>
+                    <span>Fecha: </span>
+                    <span>{{ order_detail.created_date | date:'mediumDate': 'utc' }}</span>
+                </div>
+                <div>
+                    <span>Status: </span>
+                    <span class = "status_green">{{ order_detail.order_status}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <div class = "section_left">
+                <div class = "card_item">
+                    <h4>Informacion de contacto</h4>
+                    <div class = "card_item_detail">
+                        <div>
+                            <p>Nombre</p>
+                            <p>{{ order_detail.user_name }}</p>
+                        </div>
+                        <div>
+                            <p>Telefono</p>
+                            <p>{{ order_detail.phone}}</p>
+                        </div>
+                        <div>
+                            <p>Correo</p>
+                            <p>{{ order_detail.email }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "card_item">
+                    <h4>Informacion de Envio</h4>
+                    <div  class = "card_item_detail">
+                        <div>
+                            <p>Direccion</p>
+                            <p>{{ order_detail.address }}</p>
+                        </div>
+                        <div>
+                            <p>Ciudad</p>
+                            <p>{{ order_detail.city}}</p>
+                        </div>
+                        <div>
+                            <p>Estado</p>
+                            <p>{{ order_detail.state}}</p>
+                        </div>
+                        <div>
+                            <p>Codigo postal</p>
+                            <p>{{ order_detail.zip}}</p>
+                        </div>
+                        <div>
+                            <p>Pais</p>
+                            <p>{{ order_detail.country }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "card_item">
+                    <h4>Metodo de pago</h4>
+                    <div  class = "card_item_detail">
+                        <div>
+                            <p>Metodo</p>
+                            <p>{{ order_detail.payment_name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "section_right">
+                <div class = "order">
+                    <div class = "order_header">
+                        <h4>Detalle de orden</h4>
+                    </div>
+                    <div class = "order_body">
+                        <div class = "order_item" *ngFor="let product of list_products">
+                            <div class = "img_container">
+                                <img [src]="product.image_url" alt="">
+                            </div>
+                            <div class = "item_detail">
+                                <div>
+                                    <p>{{ product.name }}</p>
+                                    <p>{{ product.model }}</p>
+                                </div>
+                                <div>
+                                    <p>Cantidad : {{ product.selected_qty }}</p>
+                                </div>
+                                <div>
+                                    <p>Precio : {{ product.price | currency}}</p>
+                                    <p>{{ ( product.price * product.selected_qty ) | currency }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "order_footer">
+                        <div>
+                            <p>Subtotal</p>
+                            <p>{{ order_detail.subtotal | currency }}</p>
+                        </div>
+                        <div>
+                            <p>I.V.A ({{order_detail.iva}}%)</p>
+                            <p>{{ order_detail.total_iva | currency }}</p>
+                        </div>
+                        <div>
+                            <p>Costo de envio</p>
+                            <p>{{ order_detail.shipping_cost | currency }}</p>
+                        </div>
+                        <div>
+                            <p>Total</p>
+                            <p>{{ order_detail.total | currency }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,113 @@
+<div class="section_container">
+  <div class="banner">
+    <app-slice-carousel [banner_slides]="banner_slides" *ngIf="banner_slides.length > 0"></app-slice-carousel>
+  </div>
+  <div class="home_start">
+    <div class="start_left">
+      <div class="left_top">
+        <div class="wrap_titles">
+          <h2 class="sec_title">Productos más vistos</h2>
+          <p class="sec_small_text">¡Los productos favoritos!</p>
+        </div>
+        <ul class="wrap_promo_prods">
+          <li
+            class="promo_prod"
+            *ngFor="let prod of arr_mostviewed | slice: 1; let i = index"
+            (click)="goToDetail(prod)"
+          >
+            <div class="wrap_prod_img">
+              <img class="promo_prod_img" [src]="prod.image_url" />
+            </div>
+            <div class="wrap_prod_det">
+              <span class="prod_title">{{ prod.name }}</span>
+              <div class="prod_rating">
+                <span class="material-icons-outlined star">star</span>
+                <span class="material-icons-outlined star">star</span>
+                <span class="material-icons-outlined star">star</span>
+                <span class="material-icons-outlined star">star</span>
+                <span class="material-icons-outlined star">star</span>
+                <span class="prod_small_text">(1240)</span>
+              </div>
+              <span class="prod_price">{{ prod.price | currency }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="left_bottom">
+        <div class="wrap_titles">
+          <h2 class="sec_title">Lo más nuevo</h2>
+          <p class="sec_small_text">!Se el primero en comprarlo!</p>
+        </div>
+        <ul class="wrap_promo_prods">
+          <li class="promo_prod small_promo_prod" *ngFor="let prod of arr_newlyadded" (click)="goToDetail(prod)">
+            <div class="wrap_prod_img">
+              <img class="small_promo_prod_img" [src]="prod.image_url" />
+            </div>
+            <div class="wrap_prod_det">
+              <span class="prod_title small_prod_title">{{ prod.name }}</span>
+              <span class="prod_price">{{ prod.price | currency }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="start_right" (click)="goToDetail(arr_mostviewed[0])">
+      <div class="wrap_titles">
+        <h2 class="sec_title">Producto más visto</h2>
+        <p class="sec_small_text">!No esperes más para adquirirlo!</p>
+      </div>
+      <div class="producto_mes" *ngIf="arr_mostviewed.length > 0">
+        <img class="image_promo" [src]="arr_mostviewed[0].image_url" />
+      </div>
+    </div>
+  </div>
+
+  <div class="home_offers">
+    <div class="offers_banner">
+      <div class="banner_item">
+        <div class="item_content">
+          <span class="material-icons-outlined offer_icon"> local_shipping </span>
+          <div class="wrap_item_text">
+            <h3 class="text--semi-bold">Entregas a todo México</h3>
+          </div>
+        </div>
+      </div>
+      <div class="banner_item">
+        <div class="item_content">
+          <span class="material-icons-outlined offer_icon"> sell </span>
+          <div class="wrap_item_text">
+            <h3 class="text--semi-bold">Los mejores precios en el mercado</h3>
+          </div>
+        </div>
+      </div>
+      <div class="banner_item">
+        <div class="item_content">
+          <span class="material-icons-outlined offer_icon"> lock </span>
+          <div class="wrap_item_text">
+            <h3 class="text--semi-bold">Compra rapida y segura</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home_featured">
+    <div class="featured_container">
+      <div class="featured_title_wrap">
+        <h2 class="sec_title">Productos destacados</h2>
+        <p class="sec_small_text">¡Productos recomendados!</p>
+      </div>
+      <div class="featued_products">
+        <div class="ftd_prod" *ngFor="let ft of arr_featured" (click)="goToDetail(ft)">
+          <div class="wrap_ftd_prod">
+            <img class="ftd_prod_img" [src]="ft.image_url" />
+          </div>
+          <div class="wrap_ftd_prod_text">
+            <h2 class="ftd_prod_title">{{ ft.name }}</h2>
+            <p>{{ ft.model }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

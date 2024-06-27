@@ -1,0 +1,22 @@
+.container{
+    padding: 0 16px;
+    display: flex;
+    justify-content: center;
+    min-height: 600px;
+    .us{
+        text-align: center;
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 32px;
+        & > div{
+            display: flex;
+            flex-direction: column;
+            row-gap: 16px;
+            h2,h4{
+                text-align: center;
+            }
+        }
+    }
+}

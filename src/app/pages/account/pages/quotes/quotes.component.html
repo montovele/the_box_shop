@@ -1,0 +1,55 @@
+<div class="main">
+  <div class="main__header">
+    <h3 class="text text--xl text--bold">Mis cotizaciones</h3>
+    <app-search [placeholder]="'Buscar cotizacion'" (searchChange)="changeSearch($event)"></app-search>
+  </div>
+  <div class="empty_stage" *ngIf="quotes.length == 0">
+    <span class="material-symbols-outlined"> shopping_bag </span>
+    <p>No hay Cotizaciones</p>
+  </div>
+  <ul class="order-list" *ngIf="quotes.length > 0">
+    <li class="order-list__item" *ngFor="let quote of quotes">
+      <!-- desktop -->
+      <div class="row row--flex row--flex-space-between row--md-hidden">
+        <div class="col col--flex col--flex-align-center">
+          <p class="text text--sm text--semi-bold text--mr-30">
+            Numero
+            <span class="text text--regular text--dark-gray text--block">
+              {{ quote.quote_number }}
+            </span>
+          </p>
+          <p class="text text--sm text--semi-bold text--mr-30">
+            Fecha de creacion
+            <span class="text text--regular text--dark-gray text--block">
+              {{ quote.created_date | date: "mediumDate":"utc" }}
+            </span>
+          </p>
+          <p class="text text--sm text--semi-bold text--mr-30">
+            Total
+            <span class="text text--regular text--bold text--block">
+              {{ quote.total | currency }}
+            </span>
+          </p>
+          <p class="text text--sm text--semi-bold">
+            Status
+            <span class="text text--regular text--bold text--block">
+              {{ quote.name_status }}
+            </span>
+          </p>
+        </div>
+        <div class="col col--flex col--flex-align-center">
+          <a class="btn btn--mr-10" (click)="openQuoteDetail(quote.id_quote)"> Ver cotizacion </a>
+          <!-- <button class="btn">
+              Ver recibo
+            </button> -->
+        </div>
+      </div>
+    </li>
+  </ul>
+  <app-pagination
+    [total_results]="total_results"
+    [limit]="filter_quote.limit"
+    [(page)]="filter_quote.page"
+    (goPage)="getQuotes()"
+  ></app-pagination>
+</div>

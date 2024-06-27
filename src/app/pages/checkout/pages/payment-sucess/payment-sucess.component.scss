@@ -1,0 +1,227 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 60px;
+  padding: 0 10px;
+  padding-top: 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 160px;
+  column-gap: 15px;
+  width: 100%;
+  max-width: 618px;
+  row-gap: 20px;
+  height: 100%;
+  &__tankyou {
+    display: flex;
+    justify-content: center;
+  }
+  &__tankyou_message {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    color: #454545;
+    text-align: center;
+  }
+  &__information {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+    width: 100%;
+  }
+  &__information_section {
+    row-gap: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__information_section > div:first-child {
+    width: 50px;
+    height: 50px;
+    background-color: #066CFF;
+    border-radius: 50%;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__information_section > div:first-child > span {
+    color: white;
+  }
+  &__information_section > div:nth-child(2) {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  &__information_section > div > p:first-child {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 5px;
+  }
+}
+
+.order_summary {
+  width: 100%;
+  max-width: 742px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  &__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+  }
+  &__number {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  &__number > p > span {
+    font-weight: 500;
+  }
+  &__body > div {
+    border-bottom: 1px solid #f2f2f2;
+  }
+  &__body > div:last-child {
+    border-bottom: none;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px;
+    column-gap: 10px;
+    & > div:first-child{
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+  &__item > div {
+    display: flex;
+    align-items: center;
+  }
+  &__item > div:first-child {
+    column-gap: 10px;
+  }
+  &__item > div:nth-child(2) {
+    column-gap: 20px;
+  }
+  &__container_img {
+    display: block;
+    width: 82px;
+    height: 100px;
+    padding: 12px;
+    background: #f2f2f2;
+    border-radius: 4px;
+  }
+  &__container_img > img {
+    width: 58px;
+    height: 76px;
+    object-fit: contain;
+  }
+  &__product_description {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  &__product_description > p:first-child {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__product_description > p:nth-child(2) {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #656565;
+  }
+  &__qty {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__price {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__totals {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  &__totals > div {
+    display: flex;
+    justify-content: space-between;
+    color: #656565;
+  }
+  &__totals > div > div:first-child {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  &__totals > div > div:nth-child(2) {
+    font-weight: 400;
+  }
+  &__totals > div:last-child > div {
+    font-weight: 600;
+    color: #000000;
+  }
+  &__support {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 156px;
+    justify-content: center;
+  }
+  &__support > p:first-child {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #454545;
+  }
+  &__support > a:nth-child(2) {
+    color: #fa375a;
+    text-decoration: none;
+  }
+}
+
+.free_shipping {
+  color: #0a7841;
+  font-weight: 500;
+}
+
+@media (max-width: 520px) {
+  .header {
+    &__tankyou_message {
+      flex-direction: column;
+      row-gap: 20px;
+    }
+    &__tankyou_message > div:first-child {
+      order: 2;
+      text-align: center;
+    }
+    &__information {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 20px;
+    }
+  }
+
+  .order_summary {
+    &__item > div:nth-child(2) {
+      flex-direction: column;
+      row-gap: 5px;
+      justify-content: center;
+    }
+    &__support {
+      text-align: center;
+    }
+  }
+}

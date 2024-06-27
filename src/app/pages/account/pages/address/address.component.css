@@ -1,0 +1,48 @@
+@media only screen and (max-width: 1024px) {
+  .col--md-100 { width: 100% }
+}
+
+@media only screen and (max-width: 480px) {
+  .row--sm-block { display: block }
+  .col--sm-100 { width: 100% }
+  .form__group--mb-20 { margin-bottom: 20px }
+}
+
+.main{
+  flex-direction: column;
+}
+
+.address_square{
+  padding: 15px;
+  position: relative;
+  width: 250px;
+  height: 170px;
+  border-radius: 7px;
+  border: 1px solid #C7C7C7;
+  text-align: left;
+}
+
+.abs_edit{
+  position: absolute;
+  cursor: pointer;
+  right: 15px;
+  top: 15px;
+  font-size: 18px;
+  color: #066CFF;
+}
+
+.abs_remove {
+  color: #ff3000;
+  position: absolute;
+  cursor: pointer;
+  right: 45px;
+  top: 15px;
+  font-size: 18px;
+}
+
+.link_blue { 
+  color:#007185; 
+}
+.link_blue:hover {
+  text-decoration: underline;
+}

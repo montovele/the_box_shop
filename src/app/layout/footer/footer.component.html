@@ -1,0 +1,188 @@
+<div class="wrap-footer">
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="row row--flex row--flex-space-between row--flex-col">
+        <div class="wrap-menu">
+          <div class="col col--sm-mb-20">
+            <div class="row row--mb-20">
+              <p class="text text--sm text--uppercase text--semi-bold text--light-gray">
+                Categorias
+              </p>
+            </div>
+            <ul class="menu">
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="selectCategory('laptops')">
+                  Laptops
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="selectCategory('monitores')">
+                  Monitores
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="selectCategory('accesorios gaming')">
+                  Accesorios Gaming
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="selectCategory('computadoras')">
+                  Computadoras
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="col col--sm-mb-20">
+            <div class="row row--mb-20">
+              <p class="text text--sm text--uppercase text--semi-bold text--light-gray">
+                Mi cuenta
+              </p>
+            </div>
+            <ul class="menu">
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('/portal/account/details')">
+                  Perfil
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('/portal/account/orders')">
+                  Mis ordenes
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('/portal/account/quotes')">
+                  Mis cotizaciones
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('portal/cart')">
+                  Mi carrito
+                </p>
+              </li>
+              <!-- <li class="menu__item">
+                <a href="" class="menu__link">
+                  Favoritos
+                </a>
+              </li> -->
+            </ul>
+          </div>
+          <div class="col col--sm-mb-20">
+            <div class="row row--mb-20">
+              <p class="text text--sm text--uppercase text--semi-bold text--light-gray">
+                Soporte
+              </p>
+            </div>
+            <ul class="menu">
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('portal/terminos')">
+                  Terminos y condiciones
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('portal/terminos', {section : 'return'})">
+                  Politica de retornos
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('portal/privacidad')">
+                  Aviso de privacidad
+                </p>
+              </li>
+              <!-- <li class="menu__item">
+                <a href="" class="menu__link">
+                  Precios de envío
+                </a>
+              </li>
+              <li class="menu__item">
+                <a href="" class="menu__link">
+                  FAQ
+                </a>
+              </li> -->
+            </ul>
+          </div>
+          <div class="col">
+            <div class="row row--mb-20">
+              <p class="text text--sm text--uppercase text--semi-bold text--light-gray">
+                Empresa
+              </p>
+            </div>
+            <ul class="menu">
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('portal/nosotros')">
+                  Acerca de nosotros
+                </p>
+              </li>
+              <li class="menu__item">
+                <p href="" class="menu__link" (click)="getRoute('portal/contact')">
+                  Contactanos
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col col--md-flex col--sm-flex-col">
+          <div class="row row--mb-20 row--md-hidden">
+            <p class="text text--sm text--uppercase text--semi-bold text--light-gray">
+              Suscribete a nuestro newsletter
+            </p>
+          </div>
+          <div class="row row--mb-20">
+            <p class="text text--light-gray">
+              Las últimas novedades y articulos, se envian a
+              <span class="text--block text--sm-initial">
+                tu correo semanalmente.
+              </span>
+            </p>
+          </div>
+          <form class="form">
+            <div class="row row--flex">
+              <div class="col col--100 col--mr-10">
+                <div class="form__group">
+                  <input
+                    type="text"
+                    required
+                    class="form__control"
+                    placeholder="Ingresa tu correo electronico">
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="btn btn--blue">
+                Suscribirse
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="row row--flex row--flex-align-center row--flex-space-between row--sm-flex-col">
+        <p class="text text--light-gray text--sm-align-center">
+          <span>
+            &copy;
+            {{ current_year }}
+            PC Mart.
+            Todos los derechos reservados.
+          </span>
+        </p>
+        <div class="col col--flex col--flex-align-center col--sm-mb-20">
+          <div class="wrap-icon">
+            <a href="https://www.facebook.com/okdock.alameda/" class="white" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </div>
+          <div class="wrap-icon">
+            <a href="https://www.instagram.com/okdock.alameda/" class="white" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+          <!-- <div class="wrap-icon">
+            <a href="#" class="white">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,22 @@
+<div class="dialog_main"> 
+    <div class = "body">
+        <div class = "icon_container animate__animated animate__heartBeat">
+            <img src="assets/alert_dialog/error.svg" alt="" *ngIf = "data.type == 'error'">
+            <img src="assets/alert_dialog/check.svg" alt="" *ngIf = "data.type == 'success'">
+            <img src="assets/alert_dialog/warning.svg" alt="" *ngIf = "data.type == 'warning' || data.type == 'message'">
+        </div>
+        <div>
+            <span *ngIf = "data.type == 'error'">Error!</span>
+            <span *ngIf = "data.type == 'success'">Success!</span>
+            <span *ngIf = "data.type == 'warning' || data.type == 'message'">Warning!</span>
+        </div>
+        <div>{{ data.message }}</div>
+    </div>
+    <div class = "footer" *ngIf="data.type == 'warning'">
+        <button class="btn btn--danger" (click) = "closeDialog(false)">CLOSE</button>
+        <button *ngIf="data.type == 'warning'" class="btn btn--blue" (click) = "closeDialog(true)">ACCEPT</button>
+    </div>
+    <div class = "footer" *ngIf="data.type !='warning'">
+        <button class="btn btn--danger" style="width: 100%;" (click) = "closeDialog(false)">CLOSE</button> 
+    </div>
+</div>

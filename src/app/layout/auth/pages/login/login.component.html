@@ -1,0 +1,104 @@
+<div class="login_container">
+  <div class="login_background">
+    <div class="login_text_wrap">
+      <img src="assets/img/logo_okdock.png" class="login_logo">
+      <h1 class="login_text_title">Iniciar Sesión</h1>
+      <p class="login_text_subtitle">Somos tu conexión con las grandes marcas y lo último en tecnología personal, de trabajo y entretenimiento.</p>
+    </div>
+  </div>
+  <div class="login_form">
+    <div class="wrap-login">
+      <div class="wrap-form">
+        <div class="row row--flex col--flex-align-center pointer" routerLink="/home">
+          <span class="material-icons-outlined blue">
+            arrow_back
+          </span>
+          <h4 class="blue">Regresar</h4>
+        </div>
+        <div class="row row--flex row--mb-10">
+          <h2 class="text text--xl text--semi-bold">
+            Iniciar sesión
+          </h2>
+        </div>
+        <div class="row row--flex row--mb-20">
+          <p class="text text--dark-gray">
+            Ingresa tus credenciales para acceder a tu cuenta.
+          </p>
+        </div>
+        <form class="form"
+        [formGroup]="login_form"
+        (ngSubmit)="onSubmit()">
+        <!-- email -->
+          <div class="row row--mb-20">
+            <div class="form__group">
+              <p class="form__label"
+              [class.invalid]="submitted && f.password.errors">
+                Correo electrónico
+              </p>
+              <input
+                type="email"
+                class="form__control"
+                placeholder="Correo electrónico"
+                formControlName="email"
+                [class.invalid]="submitted && f.email.errors" />
+            </div>
+          </div>
+          <!-- password -->
+          <div class="row row--mb-5">
+            <div class="form__group">
+              <p class="form__label"
+              [class.invalid]="submitted && f.password.errors">
+                Contraseña
+              </p>
+              <input
+                type="password"
+                class="form__control"
+                placeholder="Contraseña"
+                formControlName="password"
+                [class.invalid]="submitted && f.password.errors" />
+            </div>
+          </div>
+          <div class="row row--flex row--flex-end row--mb-40">
+            <a class="text text--sm text--dark-gray pointer" routerLink="/auth/forgot">
+              ¿Olvidaste tu contraseña?
+            </a>
+          </div>
+          <div class="row row--mb-10" *ngIf="show_alert">
+            <div class="alert alert--danger">
+              {{show_alert}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="form__group">
+              <button
+                type="submit"
+                class="btn btn--blue btn--100"
+                [disabled]="loading"
+                [class.diabled]="loading">
+                <span *ngIf="!loading">
+                  Iniciar Sesión
+                </span>
+                <app-loading-spinner
+                  *ngIf="loading"
+                  [width]="20"
+                  [height]="20"
+                  [color]="'#FFF'"
+                  [border_width]="2">
+                </app-loading-spinner>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row row--flex row--flex-center">
+        <p class="text text--dark-gray text--sm">
+          ¿No tienes cuenta?
+          <a class="text--blue text--semi-bold pointer"
+          routerLink="/auth/register">
+            Crear una cuenta
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

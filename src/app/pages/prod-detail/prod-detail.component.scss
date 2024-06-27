@@ -1,0 +1,791 @@
+@import "../../../base/mixins.scss";
+.wrap-container {
+  width: 100%;
+  padding: 20px;
+  max-width: 1465px;
+  margin: 0 auto;
+  border: 1px solid gainsboro;
+  border-radius: 4px;
+  background: white;  
+  display: flex;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  & > .col{
+    width: 100%;
+  }
+}
+
+.bread_crumb{
+  display: flex;
+  align-items: center;
+}
+.bread_item{
+  color: #0457c8;
+}
+.bread_arrow{
+  font-size: 20px;
+}
+
+.product-details-container {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  justify-content: space-between;
+  &> :nth-child(1){
+    max-width: 1000px;
+    width: 100%;
+    @include screen(1350px){
+      max-width: 800px;
+    }
+    @include screen(1145px){
+      max-width: 700px;
+    }
+    @include screen(1035px){
+      max-width: 600px;
+    }
+    @include screen(900px){
+      max-width: 400px;
+    }
+    @include screen(700px){
+      max-width: 100%;
+    }
+  }
+  & > div:nth-child(2){
+    width: 100%;
+    max-width: 400px;
+    @include screen(700px){
+      max-width: 100%;
+    }
+  }
+
+}
+
+/* gallery product */
+.product-gallery-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFF;
+  margin-bottom: 20px;
+  height: 640px;
+}
+
+.product__picture {
+  width: 100%;
+  height: 100%;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+}
+
+.product-list__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: #FFF;
+  border: 2px solid #c5cbd5;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.product-list__item.active,
+.product-list__item:hover { border-color: #131523 }
+
+.product-list__picture {
+  width: 100%;
+  vertical-align: top;
+}
+
+/* highlights-card slider */
+
+.highlights-container {
+  /* border: 1px solid red; */
+
+  margin-bottom: 56px;
+  width: 100%;
+}
+
+.highlights {
+  /* border: 1px solid purple; */
+
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.highlights-card {
+  border: 1px solid #D5D7E3;
+  
+  flex: 0 0 280px;
+  width: 280px;
+  padding: 20px;
+  margin: 0 10px 10px 0;
+}
+
+.highlights-card:last-child { margin-right: 0 }
+
+.highlights-card--no-border { border: none }
+.highlights-card__top { margin-bottom: 20px }
+.highlights-card__body { margin-bottom: 50px }
+
+
+
+.description-list { width: 100% }
+.description-list__item {
+  display: flex;
+  align-items: center;
+}
+
+.description-list__icon-check {
+  color: #318000;
+  margin-right: 10px;
+}
+
+.thumb-product-picture{
+  width: 70%;
+}
+
+
+.thumb-img { width: 95px }
+.thumb-img__picture { width: 100% }
+.img { width: 70px }
+
+.return-info-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #F4F6F9;
+  border: 1px solid gainsboro;
+}
+
+.gallery{
+  /* max-width: 700px; */
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  height: 600px;
+  @include screen(600px){
+    height: 330px;
+  }
+  
+}
+
+.product-card {
+  display: flex;
+  margin: 16px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.expandible {
+  padding: 10px;
+}
+
+.also-view-products {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.also-view-card {
+  flex: 0 0 280px;
+  display: flex;
+  width: 280px;
+  margin: 0 10px 10px 0;
+}
+
+.also-view-card:last-child { margin-right: 0 }
+
+.also-bought-container-responsive { display: none }
+
+.stars {
+  color: #FFE000;
+}
+.dist_price{
+  display:flex;
+  flex-direction: row;
+}
+.dist_price_txts{
+  font-size: 12px !important;
+}
+.warp_dist_prices{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.specifications{
+  margin-top: 32px;
+}
+
+.specifications_gray{
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid gainsboro;
+  border-left: 3px solid #066CFF;
+  background-color: #F4F6F9;
+}
+.atr_specification{
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-weight: 600;
+  font-size: 13px;
+}
+.spec{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.spec:first-child{
+  margin-top: 0px !important;
+}
+.warehouse_quantity{
+  display: flex;
+  justify-content: space-between;
+}
+.custom_select{
+  height: 32px;
+  width: 40px;
+  padding: 5px;
+  text-align: center;
+}
+
+.nothing_selected{
+  font-size: 12px;
+  text-align: right;
+  float: right;
+  margin-bottom: 10px;
+  color: red;
+  font-weight: 600;
+}
+
+.add_loading_wrap{
+  display: flex;
+  column-gap: 10px;
+}
+.ctm_icon{
+  font-size: 16px !important;
+}
+
+.btn_add_cart{
+  background: linear-gradient(180deg, rgb(13 62 142) 0%, rgb(0 106 220) 100%);
+  border: none;
+  color: white;
+  width: 100%;
+}
+
+.btn_add_cart:hover{
+  box-shadow: 0 0 6px rgb(35 173 255);
+}
+
+.add_cart_wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+  color: white;
+  font-weight: 600;
+}
+
+
+.bodega_head{
+  height: 30px;
+  background: linear-gradient(180deg, rgb(82 148 255) 0%, rgb(0 106 220) 100%);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  font-size: 13px;
+  font-weight: 600;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1280px) {
+  .product-card {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col--md-hidden { display: none; }
+}
+
+@media only screen and (max-width: 768px) {
+  
+
+  .col--md-hidden { display: none; }
+
+  .also-bought-container-responsive {
+    display: block;
+    margin-bottom: 56px;
+    width: 100%;
+  }
+
+  .also-bought-products {
+    /* border: 1px solid blue; */
+
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .also-bought-card {
+    /* border: 1px solid red; */
+
+    flex: 0 0 280px;
+    width: 280px;
+    margin: 0 10px 10px 0;
+  }
+
+  .also-bought-card:last-child { margin-right: 0 }
+
+
+
+  .also-bought-thumb-img {
+    width: 280px;
+    height: 220px;
+    background-color: #D5D7E3;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+.padding_insure{
+  padding: 10px;
+  border: 1px solid gainsboro
+}
+
+.product_description {
+    font-weight: 600;
+    font-size: 21px;
+}
+
+/* Radio cards */
+.plan_selected{
+  border: 2px solid #216ee0 !important;
+  -webkit-transition: ease-in 0.3s;
+  -o-transition: ease-in 0.3s;
+  transition: all ease-in 0.3s;
+}
+
+.plans {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  /* display: flex; */
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  transition: all 0.3s ease-in;
+  max-width: 970px;
+  /* padding: 85px 50px; */
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  /* -webkit-box-shadow: 0px 8px 10px 0px #d8dfeb; */
+  /* box-shadow: 0px 8px 10px 0px #d8dfeb; */
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  
+  /* flex-wrap: wrap; */
+}
+
+.plans .plan input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.plans .plan {
+  cursor: pointer;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.plans .plan .plan-content {
+  box-sizing: border-box;
+  border: 1px solid #e1e2e7;
+  transition: box-shadow 0.4s;
+  position: relative;
+  padding: 10px;
+}
+
+.plans .plan .plan-content img {
+  margin-right: 30px;
+  height: 72px;
+}
+
+.plans .plan .plan-details span {
+  margin-bottom: 10px;
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #252f42;
+}
+
+.contie .title {
+  font-size: 16px;
+  font-weight: 500;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  color: #252f42;
+  margin-bottom: 20px;
+}
+
+.plans .plan .plan-details p {
+  color: #646a79;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.plans .plan .plan-content:hover {
+  -webkit-box-shadow: 0px 3px 5px 0px #e8e8e8;
+  box-shadow: 0px 3px 5px 0px #e8e8e8;
+}
+
+.plans .plan input[type="radio"]:checked + .plan-content:after {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  background: #216fe0;
+  right: 15px;
+  top: 15px;
+  border-radius: 100%;
+  border: 3px solid #fff;
+  box-sizing: content-box;
+  -webkit-box-shadow: 0px 0px 0px 2px #0066ff;
+  box-shadow: 0px 0px 0px 2px #0066ff;
+}
+
+.plans .plan input[type="radio"]:checked + .plan-content {
+  border: 2px solid #216ee0;
+  background: #eaf1fe;
+  -webkit-transition: ease-in 0.3s;
+  -o-transition: ease-in 0.3s;
+  transition: ease-in 0.3s;
+}
+
+.btn--purpleok{
+  background: linear-gradient(41deg, rgba(0,122,255,1) 32%, rgba(0,212,255,1) 100%);
+  border: none;
+  color: white;
+}
+
+.description{
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.prod_description{
+  font-size: 14px;
+  width: 100%; 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column;
+  overflow: auto;
+  & > * {
+    flex: 1;
+    width: auto;
+  }
+}
+.sec_title{
+  font-size: 17px;
+}
+
+
+@media screen and (max-width: 991px) {
+  .plans {
+    /* margin: 0 20px; */
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    /* padding: 40px; */
+  }
+
+  .plans .plan {
+    width: 100%;
+  }
+
+  .plan.complete-plan {
+    margin-top: 20px;
+  }
+
+
+
+  .plans .plan input[type="radio"]:checked + .plan-content:after {
+    top: 45%;
+    -webkit-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+  }
+}
+
+
+
+@media screen and (max-width: 540px) {
+  .plans .plan .plan-content img {
+    margin-bottom: 20px;
+    height: 56px;
+    -webkit-transition: height 0.4s;
+    -o-transition: height 0.4s;
+    transition: height 0.4s;
+  }
+
+  .plans .plan input[type="radio"]:checked + .plan-content:after {
+    top: 20px;
+    right: 10px;
+  }
+
+  .plans .plan .plan-content .plan-details {
+    width: 100%;
+  }
+
+  .plans .plan .plan-content {
+    padding: 20px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+  }
+}
+
+/* inspiration */
+.inspiration {
+  font-size: 12px;
+  margin-top: 50px;
+  position: absolute;
+  bottom: 10px;
+  font-weight: 300;
+}
+
+.inspiration a {
+  color: #666;
+}
+@media screen and (max-width: 767px) {
+  /* inspiration */
+  .inspiration {
+    display: none;
+  }
+}
+
+
+
+
+/* Custom table */
+body {
+	margin: 1rem;
+}
+
+table {
+	--accent-color: #066cff;
+	--text-color: slategray;
+	--bgColorDarker: #ececec;
+	--bgColorLighter: #fcfcfc;
+	--insideBorderColor: lightgray;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 1px solid var(--accent-color);
+	border-collapse: collapse;
+	color: var(--text-color);
+	table-layout: fixed;
+}
+
+table caption {
+	margin: 1rem 0;
+	color: slategray;
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 0.055rem;
+	text-align: center;
+}
+
+table thead tr {
+	color: whitesmoke;
+	background-color: var(--accent-color);
+	font-size: 1rem;
+}
+
+table tbody tr {
+	border: 1px solid var(--insideBorderColor);
+	background-color: var(--bgColorDarker);
+}
+
+table tbody tr:nth-child(odd) {
+	background-color: var(--bgColorLighter);
+}
+
+table th {
+	letter-spacing: 0.075rem;
+}
+
+table th,
+table td {
+	padding: 0.75rem 1rem;
+	font-weight: normal;
+	text-align: left;
+  font-size: 13px;
+}
+
+table th:nth-child(4),
+table td:nth-child(4) {
+	text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+	table {
+		border: none;
+	}
+
+	table caption {
+		padding: 0.75rem 1rem;
+		border-radius: 6px 6px 0 0;
+		color: whitesmoke;
+		font-size: 1.35rem;
+		background-color: var(--accent-color);
+	}
+
+	table thead {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		clip: rect(0 0 0 0);
+		overflow: hidden;
+	}
+
+	table tbody tr {
+		margin-bottom: 2rem;
+		display: block;
+	}
+
+	table td {
+		font-size: 0.875rem;
+		text-align: right;
+		display: block;
+	}
+
+	table td:before {
+		content: attr(data-label);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.075rem;
+		text-transform: uppercase;
+		float: left;
+		opacity: 0.5;
+	}
+
+	table td:not(:last-child) {
+		border-bottom: 1px solid var(--insideBorderColor);
+	}
+}
+
+.wrap_spec{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+  row-gap: 15px;
+}
+
+.spec_item{
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.spec_header{
+  background-color: #216fe0;  
+  padding: 2px;
+  padding-left: 7px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.spec_body{
+  padding: 7px;
+}
+
+.spec{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.spec_section{
+  font-weight: 600;
+  color: white;
+  font-size: 13px;
+}
+
+.spec_key{
+  color: black;
+  font-size: 13px;
+}
+
+.spec_value{
+  color: black;
+  font-size: 13px;
+}
+
+@media screen and (max-width: 700px){
+  .product-details-container{
+    flex-direction: column;
+    row-gap: 32px;
+  }
+  .product_description {
+    font-weight: 500;
+    font-size: 17px;
+  }
+  .wrap_spec{
+    display: block;
+  }
+  .spec_item{
+    margin-bottom: 10px;
+  }
+}

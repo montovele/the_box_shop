@@ -1,0 +1,282 @@
+<div class="form" *ngIf="!order_detail">
+  <div class="wrap-container">
+    <div class="container">
+      <div class="order_info col col--59 col--md-100">
+        <div class="wrap-information">
+          <div class="row row--mb-20">
+            <p class="text text--xl text--semi-bold">Información de contacto</p>
+          </div>
+          <div class="contact_info" [formGroup]="form_info_envio">
+            <div>
+              <div class="form__group form__group--mb-20">
+                <p class="form__label" [class.errors]="f_envio.email.errors && is_submitted">Correo electrónico</p>
+                <input formControlName="email" type="email" class="form__control" placeholder="Correo electrónico" />
+              </div>
+            </div>
+            <div>
+              <div class="form__group">
+                <p class="form__label" [class.errors]="f_envio.phone.errors && is_submitted">Número de teléfono</p>
+                <input formControlName="phone" type="text" class="form__control" placeholder="Número de teléfono" />
+              </div>
+            </div>
+            <div>
+              <div class="form__group">
+                <p class="form__label" [class.errors]="f_envio.name.errors && is_submitted">Nombre</p>
+                <input formControlName="name" type="text" class="form__control" placeholder="Nombre" />
+              </div>
+            </div>
+            <div>
+              <div class="form__group">
+                <p class="form__label" [class.errors]="f_envio.last_name.errors && is_submitted">Apellidos</p>
+                <input formControlName="last_name" type="text" class="form__control" placeholder="Apellidos" />
+              </div>
+            </div>
+          </div>
+          <div class="row row--mb-20">
+            <p class="text text--xl text--semi-bold">Información de envío</p>
+          </div>
+          <app-my-address
+            *ngIf="!id_quote && auth_service.token"
+            (select_address)="selectAddres($event)"
+          ></app-my-address>
+          <div class="contact_info" [formGroup]="form_direccion" *ngIf="id_quote || !auth_service.token">
+            <div>
+              <div class="form__group form__group--mb-20">
+                <p class="form__label" [class.errors]="f_direccion.address.errors && is_submitted">Direccion</p>
+                <input formControlName="address" type="text" class="form__control" placeholder="Calle, Colonia" />
+              </div>
+            </div>
+            <div>
+              <div class="form__group">
+                <p class="form__label" [class.errors]="f_direccion.city.errors && is_submitted">Ciudad</p>
+                <input formControlName="city" type="text" class="form__control" placeholder="Ciudad" />
+              </div>
+            </div>
+            <div>
+              <div class="form__group">
+                <p class="form__label" [class.errors]="f_direccion.id_state.errors && is_submitted">Estado</p>
+                <select
+                  name=""
+                  id=""
+                  class="form__control"
+                  (change)="changeState($event.target.value)"
+                  formControlName="id_state"
+                >
+                  <option [ngValue]="null" selected hidden disabled>Selecciona estado</option>
+                  <option *ngFor="let state of states" [value]="state.id_state_mexico">{{ state.name_state }}</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <div class="form__group">
+                <p class="form__label" [class.errors]="f_direccion.country.errors && is_submitted">Pais</p>
+                <input formControlName="country" type="text" class="form__control" placeholder="Pais" />
+              </div>
+            </div>
+            <div>
+              <div class="form__group">
+                <p class="form__label" [class.errors]="f_direccion.zip.errors && is_submitted">Codigo postal</p>
+                <input formControlName="zip" type="number" class="form__control" placeholder="Codigo Postal" />
+              </div>
+            </div>
+          </div>
+          <!--          <div class="row row--mb-20">
+            <p class="text text--xl text--semi-bold">Método de envío</p>
+          </div>
+          <div class="row row--flex row--flex-space-between row--border-bottom row--mb-20 row--sm-block">
+            <div class="col col--49 col--sm-100">
+              <div class="card active">
+                <div class="card__top">
+                  <div class="row row--flex row--flex-align-center row--flex-space-between row--mb-10">
+                    <p class="text text--sm text--semi-bold">Estándar</p>
+                    <span class="material-icons card__icon"> check_circle </span>
+                  </div>
+                  <div class="row">
+                    <p class="text text--sm text--dark-gray">4-10 días hábiles</p>
+                  </div>
+                </div>
+                <div class="card__bottom">
+                  <div class="row">
+                    <p class="text text--semi-bold">$25.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="row row--mb-20">
+            <p class="text text--xl text--semi-bold">Pago</p>
+          </div>
+          <div class="select_pay">
+            <div [class.active_pay]="select_pay == 1" (click)="selectPay(1)">
+              <div>
+                <i class="ti ti-credit-card"></i>
+              </div>
+              <p>Tarjeta</p>
+            </div>
+            <!-- <div [class.active_pay]="select_pay == 2" (click)="selectPay(2)">
+              <div>
+                <i class="ti ti-building-store"></i>
+              </div>
+              <p>Recoger en Tienda</p>
+            </div> -->
+            <div
+              [class.active_pay]="select_pay == 2"
+              (click)="selectPay(2)"
+              *ngIf="user_information && user_information.limit_credit"
+            >
+              <div>
+                <i class="ti ti-brand-shopee"></i>
+              </div>
+              <p>
+                Credito <span class="limit_credit">{{ user_information.available_credit | currency }}</span>
+              </p>
+            </div>
+          </div>
+          <!--  <div class="wrap-section" *ngIf="select_pay == 1">
+            <div class="section" [formGroup]="form_pago">
+              <div class="row row--mb-20">
+                <div class="form__group">
+                  <p class="form__label" [class.errors]="f_pago.card_number.errors && is_submitted">
+                    Número de tarjeta
+                  </p>
+                  <input
+                    type="tel"
+                    maxlength="19"
+                    placeholder="xxxx xxxx xxxx xxxx"
+                    formControlName="card_number"
+                    (keyup)="setCreditCard()"
+                    (keypress)="setCreditCard()"
+                    class="form__control"
+                  />
+                </div>
+              </div>
+              <div class="row row--mb-20">
+                <div class="form__group">
+                  <p class="form__label" [class.errors]="f_pago.card_name.errors && is_submitted">
+                    Nombre en la tarjeta
+                  </p>
+                  <input
+                    formControlName="card_name"
+                    type="text"
+                    class="form__control"
+                    placeholder="Nombre en la tarjeta"
+                  />
+                </div>
+              </div>
+              <div class="row row--flex">
+                <div class="col col--80 col--mr-10">
+                  <div class="form__group">
+                    <p class="form__label" [class.errors]="f_pago.card_exp.errors && is_submitted">
+                      Fecha de expiración (MM/YYYY)
+                    </p>
+                    <input
+                      (keyup)="setExpDate()"
+                      (keypress)="setExpDate()"
+                      formControlName="card_exp"
+                      type="tel"
+                      maxlength="7"
+                      class="form__control"
+                      placeholder="XX/XXXX"
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form__group">
+                    <p class="form__label" [class.errors]="f_pago.cvc.errors && is_submitted">CVC</p>
+                    <input
+                      (keyup)="setCVC()"
+                      (keypress)="setCVC()"
+                      formControlName="cvc"
+                      type="tel"
+                      maxlength="4"
+                      class="form__control"
+                      placeholder="CVC"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="col col--39 col--sm-100 col--md-100">
+        <div class="wrap-order-summary">
+          <div class="row row--mb-20">
+            <p class="text text--xl text--semi-bold">Resumen de orden</p>
+          </div>
+          <div class="order">
+            <div class="order__top">
+              <ul class="product-list">
+                <li class="product-list__item" *ngFor="let prod of cart_service.list_prod_cart">
+                  <div class="row row--flex">
+                    <div class="col">
+                      <div class="thumb-img">
+                        <img width="100%" [src]="prod.image_url" />
+                      </div>
+                    </div>
+                    <div class="product_info">
+                      <div class="section">
+                        <div class="row">
+                          <p class="text text--sm text--dark-gray">Modelo: {{ prod.model }}</p>
+                        </div>
+                        <div class="row row--flex row--flex-space-between row--flex-align-center">
+                          <p class="text text--sm text--semi-bold">
+                            {{ prod.name }}
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <p class="sumary_price">Cantidad: {{ prod.selected_qty }}</p>
+                      </div>
+                      <div class="section">
+                        <div class="product_price">
+                          <p class="sumary_price">{{ prod.price | currency }} c/u</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="order__body">
+              <div class="row row--flex row--flex-align-center row--flex-space-between row--mb-20">
+                <p class="text text--semi-bold">Subtotal</p>
+                <p class="text text--bold">
+                  {{ cart_service.subtotal | currency }}
+                </p>
+              </div>
+              <div class="row row--flex row--flex-align-center row--flex-space-between row--mb-20">
+                <p class="text text--semi-bold">
+                  I.V.A <span>({{ f_direccion.iva.value }}%)</span>
+                </p>
+                <p class="text text--bold">
+                  {{ cart_service.iva | currency }}
+                </p>
+              </div>
+              <div class="row row--flex row--flex-align-center row--flex-space-between row--mb-20">
+                <p class="text text--semi-bold">Envio</p>
+                <p class="text text--bold">
+                  {{ cart_service.shipping | currency }}
+                </p>
+              </div>
+              <div class="row row--flex row--flex-align-center row--flex-space-between">
+                <p class="text text--semi-bold text--lg">Total</p>
+                <p class="text text--bold text--lg">
+                  {{ cart_service.total | currency }}
+                </p>
+              </div>
+            </div>
+            <div class="order__footer">
+              <div class="wrap-button">
+                <button class="btn btn--blue btn--100" (click)="goPay()" [disabled]="is_loading">
+                  <span [class.loader]="is_loading">Pagar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-payment-sucess *ngIf="order_detail" [order_detail]="order_detail"></app-payment-sucess>

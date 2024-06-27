@@ -1,0 +1,601 @@
+.section_container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.banner{
+  height: 350px;
+  max-width: 1500px;
+  padding: 0 20px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+/* Primera Seccion */
+.home_start{
+  width: 100%;
+  max-width: 1500px;
+  padding: 0 20px;
+  height: 650px;
+  display: flex;
+  justify-content: space-around;
+}
+.start_right{
+  transition: all 0.5s linear;
+  cursor: pointer;
+  height: 100%;
+  width: 50%;
+  flex-grow: 1;
+  background-color: white;
+  border: 1px solid #e0e6ef;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+}
+
+.start_left{
+  margin-right: 15px;
+  flex-grow: 1;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.left_top{
+  flex-grow: 1;
+  width: 100%;
+  overflow-x: auto;
+  height:60%;
+  margin-bottom: 15px;
+  background-color: white;
+  border: 1px solid #e0e6ef;
+}
+.left_bottom{
+  flex-grow: 1;
+  width: 100%;
+  height:40%;
+  margin-top: 15px;
+  background-color: white;
+  border: 1px solid #e0e6ef;
+  overflow: auto;
+}
+.start_right:hover{
+  border: 1px solid #c5cbd5;
+}
+.left_top:hover{
+  border: 1px solid #c5cbd5;
+}
+.left_bottom:hover{
+  border: 1px solid #c5cbd5;
+}
+.wrap_titles{
+  box-sizing: border-box;
+  padding: 15px;
+}
+.sec_title{
+  margin: 0;
+}
+.sec_small_text{
+  font-size: 13px;
+}
+.image_promo{
+  max-width: 390px;
+  width: 100%;
+}
+.wrap_promo_prods{
+  width: 100%;
+  padding-left: 20px;
+  /* background: gray; */
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+
+}
+.promo_prod{
+  border-radius: 7px;
+  background: white;
+  width: 160px;
+  height: 250px;
+  /* background: blue; */
+  margin-left: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding:5px;
+  cursor: pointer;
+}
+.promo_prod:hover{
+  border: solid 1px #337be8;
+}
+.small_promo_prod{
+  height: 150px;
+}
+.wrap_prod_img{
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: grid;
+  align-items: self-end;
+  justify-content: center;
+  text-align: center;
+}
+.promo_prod_img{
+  position: relative;
+  width: 100%;
+  max-width: 140px;
+  margin: auto;
+  max-height: 150px;
+}
+.small_promo_prod_img{
+  margin: auto;
+  max-height: 90px;
+  width: 70%;
+}
+.wrap_prod_det{
+  width: 100%;
+  flex: 1;
+  /* background: orange; */
+  padding-top: 10px;
+}
+.prod_title{
+  color: #0457c8;
+  font-size: 13px;
+  display: -webkit-inline-box;
+  line-height: 1.5em;
+  height: 3em;
+  overflow: hidden;
+}
+.small_prod_title{
+  /* height: 1.5em; */
+}
+.prod_small_text{
+  color: #0457c8;
+  font-size: 12px;
+}
+.prod_rating{
+  display: flex;
+  flex-direction: row;
+  /* background: green; */
+  width: 100%;
+  height: 18px;
+}
+.star {
+  font-size: 17px;
+  color: rgb(255, 224, 0);
+}
+.prod_price{
+  font-size: 14px;
+  font-weight: 600;
+  color: #1d262b;
+}
+.producto_mes{
+  height: 100%;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Segunda seccion */
+.home_offers{
+  /* background-color: white; */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.offers_banner{
+  width: 100%;
+  max-width: 1500px;
+  padding: 0 20px;
+  height: 120px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 25px;
+}
+.banner_item{
+  background-color: rgb(28,96,255);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+}
+.banner_item:nth-child(1){
+  background-image: url('/assets/img/background_grd_1.png');
+}
+.banner_item:nth-child(2){
+  background-image: url('/assets/img/background_grd_2.png');
+}
+.banner_item:nth-child(3){
+  background-image: url('/assets/img/background_grd_3.png');
+}
+.item_content{
+  display: flex;
+  width: 100%;
+  height: 70%;
+  justify-content: center;
+  align-items: center;
+
+}
+.border_itm{
+  border-right: 1px solid #c5cbd5;
+}
+.fake_image{
+  width: 60px;
+  height: 60px;
+  background-color: #337be8;
+  margin-right: 20px;
+}
+.wrap_item_text{
+  width: 200px;
+  font-weight: 600 !important;
+  color: white;
+}
+
+/* Tercera seccion */
+.home_promos{
+  padding-top:40px;
+  background-color: white;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+.home_promos_blue{
+  background-color: #066CFF;
+  border-radius: 8px;
+  overflow-x: hidden;
+  max-width: 1500px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+}
+.promos_blue_txt_container{
+  height: 100%;
+  width: 440px;
+  padding: 30px;
+}
+.promos_products_container{
+  padding-left: 20px;
+  overflow-x: auto;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  padding: 30px;
+}
+
+.prod_item_promo{
+  height: 100%;
+  background-color: white;
+  width: 210px;
+  margin-left:20px;
+  border-radius: 8px;
+}
+
+.acutal_text_container{
+  width: 350px;
+}
+.promos_bt_text{
+  color: white;
+  margin: 0;
+  font-size: 40px;
+  line-height: 1.1;
+}
+.promos_bt_smalltext{
+  margin-top: 10px;
+  font-size:13px;
+  color:white;
+}
+
+
+/* Cuarta seccion */
+.home_featured{
+  padding-top:40px;
+  background-color: white;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+}
+.featured_container{
+  background-color: white;
+  max-width: 1500px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
+}
+.featured_title_wrap{
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+.featued_products{
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid #c5cbd5;
+  border-left: 1px solid #c5cbd5;
+  border-top: 1px solid #c5cbd5;
+}
+
+.ftd_prod{
+  cursor: pointer;
+  padding-bottom: 20px;
+  height: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid #c5cbd5; */
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ftd_prod:nth-child(even) {
+  border-right: 1px solid #c5cbd5;
+}
+.ftd_prod:nth-child(odd) {
+  border-right: 1px solid #c5cbd5;
+}
+.ftd_prod:nth-child(4) {
+  border-top: 1px solid #c5cbd5;
+}
+.ftd_prod:nth-child(5) {
+  border-top: 1px solid #c5cbd5;
+}
+.ftd_prod:nth-child(6) {
+  border-top: 1px solid #c5cbd5;
+}
+
+
+.wrap_ftd_prod{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* background: blue; */
+  align-items: center;
+  justify-content: center;
+}
+.ftd_prod_img{
+  max-width: 230px;
+  width: 100%;
+}
+.wrap_ftd_prod_text{
+  width: 100%;
+  height: auto;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.ftd_prod_title{
+  color: #0457c8;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+}
+.ftd_prod_title:hover{
+  text-decoration: underline;
+  outline: #0457c8;
+}
+.ftd_prod_text{
+  font-size: 13px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+/* Quinta seccion */
+.home_brands{
+  padding-top: 40px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+}
+.home_brands_container{
+  max-width: 1500px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+.wrap_brand_items{
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  padding-top: 20px;
+}
+.brand_item{
+  height: 300px;
+  background-color: white;
+  border: 1px solid #e0e6ef;
+}
+.brand_item:hover{
+  border: 1px solid #c5cbd5;
+}
+.home_newsletter_container{
+  padding-top: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+.home_newsletter{
+  width: 100%;
+  height: 110px;
+  background-color: #0457c8;;
+}
+
+.offer_icon{
+  margin-right: 20px;
+  font-size: 70px;
+  color: white;
+}
+
+@media only screen and (max-width: 1024px) {
+  .home_start {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .start_left { width: 100% }
+
+  .start_right {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 30px;
+  }
+
+  .producto_mes { margin-left: 0 }
+
+  .home_promos_blue {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .wrap_promo_prods { padding-left: 0; }
+
+  .promo_prod:first-child { margin-left: 0; }
+
+}
+
+@media only screen and (max-width: 760px) {
+  .offers_banner {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .offer_icon {
+    font-size: 40px;
+  }
+
+  .home_offers {
+    padding: 0 20px;
+    margin-bottom: 40px;
+  }
+
+  .banner_item {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .item_content {
+    justify-content: flex-start;
+  }
+
+  .wrap_item_text { width: 100%; }
+
+  .border_itm { border: none; }
+
+  .featued_products {
+    grid-template-columns: 1fr;
+    border: none;
+  }
+
+  .ftd_prod {
+    border: none;
+  }
+
+  .wrap_brand_items {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .banner {
+    height: 140px;
+    max-width: 100%;
+    padding: 0px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+  .offers_banner{
+    grid-template-columns: 1fr;
+    row-gap: 25px;
+    height: auto !important;
+  }
+  .banner_item{
+    padding-left: 20px;
+    height: 100px;
+    padding-right: 20px;
+  }
+  .home_offers{
+    padding: 0px;
+  }
+  .home_start{
+    padding: 0 0;
+  }
+  .start_right{
+    padding-bottom: 20px;
+  }
+  .left_top{
+    padding-bottom: 20px;
+  }
+  .left_bottom{
+    padding-bottom: 20px;
+  }
+  .sec_title {
+    font-size: 17px;
+  }
+  .sec_small_text {
+    font-size: 12px;
+  }
+  .wrap_promo_prods {
+    padding-left: 10px;
+  }
+  .offers_banner{
+    padding: 0 10px;
+  }
+  .ftd_prod{
+    border: solid 1px gainsboro !important;
+    height: 280px;
+  }
+  .ftd_prod_img {
+    max-width: 120px;
+  }
+  .ftd_prod_title{
+    font-size: 12px;
+  }
+  .wrap_ftd_prod_text p{
+    font-size: 12px;
+  }
+  .featued_products {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+  .wrap_ftd_prod_text {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .image_promo{
+    max-width: 200px;
+    width: 100%;
+  }
+}

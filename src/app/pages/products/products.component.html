@@ -1,0 +1,112 @@
+<div class="wrap-container">
+  <div class="container">
+    <div class="wrap-main">
+      <div class="wrap-filters" *ngIf="APIProduct.is_loading || (attributes && attributes.length > 0)">
+        <div class="filters_title_type">
+          <h2 class="text text--xl text--bold">Filtros</h2>
+        </div>
+        <ng-container *ngIf="!APIProduct.is_loading">
+          <div class="wrap-filter-list" *ngFor="let atr of attributes; let i = index">
+            <div class="filter_group_wraper">
+              <div class="filter_group" (click)="openGroup(atr)">
+                <p class="text text--semi-bold">
+                  {{ atr.attribute }}
+                </p>
+                <i class="fas fa-chevron-right filter_chev" [class.open_chev]="atr.opened"></i>
+              </div>
+              <div class="filter_list_attributes" [class.open_list]="atr.opened">
+                <div class="filter_attribute" *ngFor="let val of atr.attributes; let y = index">
+                  <input
+                    class="filter_checkbox"
+                    type="checkbox"
+                    [checked]="val.selected == 1"
+                    (change)="selectedAttribute($event.target, val)"
+                  />
+                  <span class="title_checkbox"> {{ val.value | slice : 0 : 26 }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <app-loading-spinner
+          *ngIf="APIProduct.is_loading"
+          [width]="46"
+          [height]="46"
+          [color]="'#1d58b7'"
+          [border_width]="3"
+        >
+        </app-loading-spinner>
+      </div>
+      <div class="body">
+        <div class="products">
+          <div class="wrap-products" #products *ngIf="arr_products.length > 0 && !APIProduct.is_loading">
+            <ng-container>
+              <div *ngFor="let product of arr_products" class="card" (click)="goToDetail(product)">
+                <div class="card__header">
+                  <img
+                    src="{{ product.image_url }}"
+                    alt="{{ product.name }}"
+                    onerror="this.src='https://wcp-images.s3.us-west-1.amazonaws.com/wcp/pictures/assets/extras/not_found.jpeg'"
+                  />
+                </div>
+                <div class="card__details">
+                  <div class="card__details__top">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                    <span class="fa fa-star unchecked"></span>
+                    <p class="card__details__top__count">3</p>
+                  </div>
+                  <div class="card__details__subtitle">
+                    <p *ngIf="product.model && product.model.length <= 25" class="card__details__title__subtxt">
+                      Modelo: {{ product.model }}
+                    </p>
+                  </div>
+                  <div class="card__details__title">
+                    <ng-container *ngIf="product.name">
+                      <p *ngIf="product.name.length <= 25" class="card__details__title__txt">
+                        {{ product.name | slice : 0 : 25 }}
+                      </p>
+                      <p *ngIf="product.name.length > 25" class="card__details__title__txt">
+                        {{ product.name | slice : 0 : 40 }}
+                      </p>
+                    </ng-container>
+                  </div>
+                  <div class="card__details__prices">
+                    <div class="card__details__prices__wrap_special__retail">
+                      <p>{{ product.price | currency }}</p>
+                    </div>
+                  </div>
+                  <div class="card__details__tag normal_tag">
+                    <div>
+                      <i class="ti ti-bolt" style="font-size: 23px"></i>
+                    </div>
+                    <div class="card__details__tag__txt">
+                      <p style="font-weight: 500">!Nuevo producto!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+          <div class="wrap-products" *ngIf="APIProduct.is_loading">
+            <ng-container>
+              <div class="card_loading skeleton" *ngFor="let item of [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]"></div>
+            </ng-container>
+          </div>
+          <div *ngIf="arr_products.length == 0 && !APIProduct.is_loading" class="empty_state">
+            <span class="material-symbols-outlined"> sentiment_dissatisfied </span>
+            <p>Lo sentimos, no encontramos ningun resultado.</p>
+          </div>
+        </div>
+        <app-pagination
+          [total_results]="APIProduct.total_results"
+          [limit]="APIProduct.filter_products.limit"
+          [(page)]="APIProduct.filter_products.page"
+          (goPage)="changePage()"
+        ></app-pagination>
+      </div>
+    </div>
+  </div>
+</div>

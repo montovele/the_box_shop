@@ -1,0 +1,11 @@
+<div class="container">
+  <select class="filter__control" [formControl]="select" [class.disabled]="disabled">
+    <option [ngValue]="null" disabled selected hidden>
+      {{ config.placeholder }}
+    </option>
+    <option [ngValue]="null" *ngIf="config.all">All</option>
+    <option *ngFor="let item of config.data" [ngValue]="item[config.value]">
+      {{ item[config.option] }}
+    </option>
+  </select>
+</div>

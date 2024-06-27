@@ -1,0 +1,152 @@
+<div class="login_container">
+  <div class="login_background">
+    <div class="login_text_wrap">
+      <img src="assets/img/logo_okdock.png" class="login_logo">
+      <h1 class="login_text_title">Registro</h1>
+      <p class="login_text_subtitle">Somos tu conexión con las grandes marcas y lo último en tecnología personal, de trabajo y entretenimiento.</p>
+    </div>
+  </div>
+  <div class="login_form">
+    <div class="wrap-login">
+
+      <div class="wrap-form">
+        <div class="row row--flex col--flex-align-center pointer" routerLink="/auth/login">
+          <span class="material-icons-outlined blue">
+            arrow_back
+          </span>
+          <h4 class="blue">Regresar</h4>
+        </div>
+        <div class="row row--flex row--mb-10">
+          <h2 class="text text--xl text--semi-bold">
+            Crear cuenta
+          </h2>
+        </div>
+        <div class="row row--flex row--mb-20">
+          <p class="text text--dark-gray">
+            Registrate para conocer las mejores ofertas
+          </p>
+        </div>
+        <form class="form"
+        [formGroup]="login_form"
+        (ngSubmit)="onSubmit()">
+        <!-- nombre y apellido -->
+        <div class="row row--flex row--flex-space-between row--mb-20 col--gap-20 ">
+          <div class="form__group">
+            <p class="form__label"
+            [class.invalid]="submitted && f.name.errors">
+              Nombre
+            </p>
+            <input
+              type="text"
+              class="form__control"
+              placeholder="Nombre"
+              formControlName="name"
+              [class.invalid]="submitted && f.name.errors" />
+          </div>
+          <div class="form__group">
+            <p class="form__label"
+            [class.invalid]="submitted && f.lastname.errors">
+              Apellido
+            </p>
+            <input
+              type="text"
+              class="form__control"
+              placeholder="Apellido"
+              formControlName="lastname"
+              [class.invalid]="submitted && f.lastname.errors" />
+          </div>
+        </div>
+        <!-- email -->
+          <div class="row row--mb-20">
+            <div class="form__group">
+              <p class="form__label"
+              [class.invalid]="submitted && f.email.errors">
+                Correo electrónico
+              </p>
+              <input
+                type="email"
+                class="form__control"
+                placeholder="Correo electrónico"
+                formControlName="email"
+                [class.invalid]="submitted && f.email.errors" />
+            </div>
+          </div>
+          <!-- password -->
+          <div class="row row--mb-20">
+            <div class="form__group">
+              <p class="form__label"
+              [class.invalid]="submitted && f.password.errors">
+                Contraseña
+              </p>
+              <input
+                type="password"
+                class="form__control"
+                placeholder="Contraseña"
+                formControlName="password"
+                [class.invalid]="submitted && f.password.errors" />
+            </div>
+          </div>
+          <!-- confirm password -->
+          <div class="row row--mb-20">
+            <div class="form__group">
+              <p class="form__label"
+              [class.invalid]="submitted && f.confirm_password.errors">
+                Confirma tu contraseña
+              </p>
+              <input
+                type="password"
+                class="form__control"
+                placeholder="Confirmación"
+                formControlName="confirm_password"
+                [class.invalid]="submitted && f.confirm_password.errors" />
+            </div>
+          </div>
+          <div class="row row--mb-10" *ngIf="wrong_password">
+            <div class="alert alert--danger">
+              Las contraseñas no coinciden
+            </div>
+          </div>
+          <div class="row row--mb-10" *ngIf="email_used">
+            <div class="alert alert--danger">
+              El correo ingresado esta en uso, intenta uno diferente.
+            </div>
+          </div>
+          <div class="row">
+            <div class="form__group">
+              <button
+                (click) = "onSubmit()"
+                type="submit"
+                class="btn btn--blue btn--100"
+                [disabled]="loading"
+                [class.diabled]="loading">
+                <span *ngIf="!loading">
+                  Iniciar Sesión
+                </span>
+                <app-loading-spinner
+                  *ngIf="loading"
+                  [width]="20"
+                  [height]="20"
+                  [color]="'#FFF'"
+                  [border_width]="2">
+                </app-loading-spinner>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row row--flex row--flex-center">
+        <p class="text text--dark-gray text--sm">
+          ¿Ya tienes cuenta?
+          <a class="text--blue text--semi-bold pointer" routerLink="/auth/login">
+            Iniciar sesión
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,42 @@
+<div class = "main">
+    <div class= " header ">
+        <h2>{{ data.order_number }}</h2>
+        <span class="material-icons-outlined" (click) = "closeDialog()">
+            close
+        </span>
+    </div>
+    <div class = "body">
+        <div class = "product" *ngFor = "let product of products">
+            <div>
+                <div class = "product_image">
+                    <img [src]="product.image_url" alt="">
+                </div>
+                <div class = "product_info">
+                    <div class = "product_name">
+                        <p>{{ product.name }}</p>
+                        <p>{{ product.model }}</p>
+                    </div>
+                    <p>Cantidad: {{ product.quantity }}</p>
+                    <p>Precio: {{ product.price | currency }}</p>
+                </div>
+            </div>
+            <div>
+                <p>{{ product.quantity * product.price | currency}}</p>
+            </div>
+        </div>
+    </div>
+    <div class = "totals">
+        <div>
+            <p>Subtotal</p>
+            <p>{{ data.total | currency }}</p>
+        </div>
+        <div>
+            <p>Shipping</p>
+            <p>{{ 0 | currency }}</p>
+        </div>
+        <div>
+            <p>Total</p>
+            <p>{{ data.total | currency }}</p>
+        </div>
+    </div>
+</div>
